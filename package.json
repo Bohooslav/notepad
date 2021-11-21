@@ -1,0 +1,11 @@
+{
+  "name": "markdown_notepad",
+  "scripts": {
+    "start": "imba -w server.imba",
+    "build": "imba build server.imba --no-hashing"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "imba": "^2.0.0-alpha.146"
+  }
+}
