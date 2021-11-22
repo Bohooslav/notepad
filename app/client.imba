@@ -307,6 +307,7 @@ tag app
 				<menu-popup[ml:auto pos:relative] bind=store.show_page_menu>
 					<button @click=(store.show_page_menu = !store.show_page_menu)>
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+							<title> "Page settings"
 							<path d="M10 12a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0-6a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 12a2 2 0 1 1 0-4 2 2 0 0 1 0 4z">
 
 						if store.show_page_menu
@@ -316,6 +317,7 @@ tag app
 
 				<button @click=toggleSettingsMenu>
 					<svg[p:2px] xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+						<title> "General settings"
 						<path d="M7.502 1.019a.996.996 0 0 0-.998.998v.451a5.734 5.734 0 0 0-1.356.566l-.322-.322a.995.995 0 0 0-1.41 0l-.705.705a.995.995 0 0 0 0 1.41l.32.32a5.734 5.734 0 0 0-.56 1.358h-.454a.995.995 0 0 0-.998.996V8.5c0 .553.446.996.998.996h.45a5.734 5.734 0 0 0 .566 1.356l-.322.322a.995.995 0 0 0 0 1.41l.705.705c.39.391 1.02.391 1.41 0l.32-.32a5.734 5.734 0 0 0 1.358.56v.456c0 .552.445.996.998.996h.996a.995.995 0 0 0 .998-.996v-.451a5.734 5.734 0 0 0 1.355-.567l.323.322c.39.391 1.02.391 1.41 0l.705-.705a.995.995 0 0 0 0-1.41l-.32-.32a5.734 5.734 0 0 0 .56-1.358h.453a.995.995 0 0 0 .998-.996v-.998a.995.995 0 0 0-.998-.996h-.449a5.734 5.734 0 0 0-.566-1.355l.322-.323a.995.995 0 0 0 0-1.41l-.705-.705a.995.995 0 0 0-1.41 0l-.32.32a5.734 5.734 0 0 0-1.358-.56v-.455a.996.996 0 0 0-.998-.998zm.515 3.976a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3z" style="marker:none">
 
 
@@ -348,6 +350,16 @@ tag app
 						<.accents .show_accents=show_accents>
 							for accent in accents when accent.name != settings.accent
 								<.accent @click=changeAccent(accent.name) [bgc: {settings.theme == 'dark' ? accent.light : accent.dark}]>
+
+				<menu-popup bind=store.show_fonts>
+					<.btnbox.cbtn.aside_button.popup_menu_box [d:flex transform@important:none ai:center pos:relative] @click=(do store.show_fonts = !store.show_fonts)>
+						<span.font_icon> "B"
+						settings.font.name
+						if store.show_fonts
+							<.popup_menu [l:0 y@off:-32px o@off:0] ease>
+								for font in fonts
+									<button.butt[ff: {font.code}] .active_butt=font.name==settings.font.name @click=setFontFamily(font)> font.name
+
 				<.btnbox>
 					<svg.cbtn[p:8px w:50%] @click=changeTheme('dark') enable-background="new 0 0 24 24" viewBox="0 0 24 24" >
 						<title> 'Night theme'
@@ -357,9 +369,11 @@ tag app
 					<svg.cbtn[w:50% p:8px] @click=changeTheme('light') viewBox="0 0 20 20">
 						<title> 'Day theme'
 						<path d="M10 14a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM9 1a1 1 0 1 1 2 0v2a1 1 0 1 1-2 0V1zm6.65 1.94a1 1 0 1 1 1.41 1.41l-1.4 1.4a1 1 0 1 1-1.41-1.41l1.4-1.4zM18.99 9a1 1 0 1 1 0 2h-1.98a1 1 0 1 1 0-2h1.98zm-1.93 6.65a1 1 0 1 1-1.41 1.41l-1.4-1.4a1 1 0 1 1 1.41-1.41l1.4 1.4zM11 18.99a1 1 0 1 1-2 0v-1.98a1 1 0 1 1 2 0v1.98zm-6.65-1.93a1 1 0 1 1-1.41-1.41l1.4-1.4a1 1 0 1 1 1.41 1.41l-1.4 1.4zM1.01 11a1 1 0 1 1 0-2h1.98a1 1 0 1 1 0 2H1.01zm1.93-6.65a1 1 0 1 1 1.41-1.41l1.4 1.4a1 1 0 1 1-1.41 1.41l-1.4-1.4z">
+
 				<.btnbox>
 					<button[p: 12px fs: 20px].cbtn @click=decreaseFontSize title='Decreace font size'> "B-"
 					<button[p: 8px fs: 24px].cbtn @click=increaseFontSize title='Increace font size'> "B+"
+
 				<.btnbox>
 					<svg.cbtn @click=changeLineHeight(no) viewBox="0 0 38 14" fill="context-fill" [padding: 16px 0]>
 						<title> "Decrease line height"
@@ -371,6 +385,7 @@ tag app
 						<rect x="0" y="0" width="28" height="2">
 						<rect x="0" y="11" width="38" height="2">
 						<rect x="0" y="22" width="18" height="2">
+
 				if window.innerWidth > 639
 					<.btnbox>
 						<svg.cbtn @click=changeMaxWidth(no) width="42" height="16" viewBox="0 0 42 16" fill="context-fill" [padding: calc(42px - 28px) 0]>
@@ -381,15 +396,6 @@ tag app
 							<title> "Decrease max width"
 							<path d="M14.5,7 L8.75,1.25 L10,-1.91791433e-15 L18,8 L17.375,8.625 L10,16 L8.75,14.75 L14.5,9 L1.13686838e-13,9 L1.13686838e-13,7 L14.5,7 Z" transform="translate(9.000000, 8.000000) scale(-1, 1) translate(-9.000000, -8.000000)">
 							<path d="M40.5,7 L34.75,1.25 L36,-5.17110888e-16 L44,8 L43.375,8.625 L36,16 L34.75,14.75 L40.5,9 L26,9 L26,7 L40.5,7 Z">
-
-				<menu-popup bind=store.show_fonts>
-					<.btnbox.cbtn.aside_button.popup_menu_box [d:flex transform@important:none ai:center pos:relative] @click=(do store.show_fonts = !store.show_fonts)>
-						<span.font_icon> "B"
-						settings.font.name
-						if store.show_fonts
-							<.popup_menu [l:0 y@off:-32px o@off:0] ease>
-								for font in fonts
-									<button.butt[ff: {font.code}] .active_butt=font.name==settings.font.name @click=setFontFamily(font)> font.name
 
 
 
@@ -451,7 +457,7 @@ tag app
 			display: -webkit-box
 			-webkit-box-orient: vertical
 			ws:pre-wrap
-		
+
 		.btnbox
 			cursor: pointer
 			height: 46px
@@ -460,8 +466,8 @@ tag app
 		.cbtn
 			width: 50%
 			height: 100%
-			fill: $c
-			color: $c
+			fill:$c @hover:$acc-color
+			color:$c @hover:$acc-color
 			display: inline-block
 			text-align: center
 			background-color: transparent
@@ -470,11 +476,12 @@ tag app
 			fill@hover:$acc-color-hover
 			bgc@hover:$acc-bgc-hover @active:$acc-bgc
 			y@active:4px
-		
+
 
 		.aside_button
-			w:100% h:46px bg:transparent @hover:$btn-bg-hover d:flex ai:center font:inherit p:0 12px
-		
+			w:100% h:46px bg:transparent @hover:$acc-bgc-hover d:flex ai:center font:inherit p:0 12px
+
+
 		.font_icon
 			font-family: "Tinos", serif
 			font-size: 27px

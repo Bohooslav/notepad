@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="uk" data-light='dark'>
+
+<head><!--$head$-->
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пісник</title>
+    <!-- reference to the client script styles -->
+    <link rel="stylesheet" href='/notepad/static/app/client.css'>
+
+    <link rel="manifest" href="/notepad/static/site.webmanifest">
+    <link rel="icon" type="image/png" href="/notepad/static/apple-touch-icon.png">
+    <meta name="description" content="Mark down your notes">
+    <!-- <link rel="canonical" href="https://bolls.life/notepad/" /> -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/notepad/apple-touch-icon.png">
+    <meta property="og:title" content="Bolls Notepad">
+    <meta property="og:description" content="Mark down your notes">
+    <meta property="og:image" content="/notepad/apple-touch-icon.png"> -->
+    <meta name="twitter:image:src" content="/notepad/static/apple-touch-icon.png">
+    <meta name="theme-color" content="#04060c" />
+</head>
+
+<body><!--$body$-->
+    <!-- reference to the client script -->
+    <script type="module" src='/static/app/client.js'></script>
+
+    <noscript>
+        Unfortunately, this site requires JavaScript that is disabled in your browser :(
+    </noscript>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/notepad/sw.js').then(function (registration) {
+                    // Registration was successful
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    registration.update();
+                }, function (err) {
+                    // registration failed :(
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>
