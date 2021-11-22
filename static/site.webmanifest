@@ -15,7 +15,7 @@
 			"purpose": "any maskable"
 		}
 	],
-	"start_url": "/",
+	"start_url": "/notepad/",
 	"theme_color": "#04060c",
 	"background_color": "#04060c",
 	"display": "standalone"
