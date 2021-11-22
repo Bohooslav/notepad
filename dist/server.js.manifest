@@ -366,7 +366,7 @@
   "public": true,
   "path": "public/__assets__/all.css",
   "asset": "$$41$$",
-  "hash": "C7NHVDJF",
+  "hash": "BEF4UD6P",
   "originalPath": "all.__dist__.css",
   "url": "/__assets__/all.css"
 },
@@ -458,7 +458,7 @@
   "imports": [],
   "exports": [],
   "inputs": [],
-  "bytes": 158855,
+  "bytes": 158967,
   "source": "$$50$$",
   "_": "output",
   "path": "public/__assets__/app/client.js.map",
@@ -466,7 +466,7 @@
   "url": "/__assets__/app/client.js.map",
   "type": "map",
   "dependencies": [],
-  "hash": "F5SK81VX"
+  "hash": "JRGGSQGG"
 },
 "$$45$$":{
   "imports": [],
@@ -539,7 +539,7 @@
     ],
     [
       "$$67$$",
-      5735
+      5742
     ],
     [
       "$$68$$",
@@ -547,7 +547,7 @@
     ],
     [
       "$$69$$",
-      1110
+      1118
     ],
     [
       "$$70$$",
@@ -575,10 +575,10 @@
     ],
     [
       "$$50$$",
-      22154
+      22281
     ]
   ],
-  "bytes": 75260,
+  "bytes": 75402,
   "map": "$$44$$",
   "source": "$$50$$",
   "css": "$$46$$",
@@ -588,7 +588,7 @@
   "url": "/__assets__/app/client.js",
   "type": "js",
   "dependencies": [],
-  "hash": "F5SK81VX",
+  "hash": "JRGGSQGG",
   "originalPath": "app/client.__dist__.js"
 },
 "$$46$$":{
@@ -596,7 +596,7 @@
   "inputs": [
     [
       "$$75$$",
-      5594
+      5616
     ],
     [
       "$$70$$",
@@ -611,7 +611,7 @@
       25
     ]
   ],
-  "bytes": 8554,
+  "bytes": 8576,
   "source": "$$50$$",
   "_": "output",
   "path": "public/__assets__/app/client.css",
@@ -619,7 +619,7 @@
   "url": "/__assets__/app/client.css",
   "type": "css",
   "dependencies": [],
-  "hash": "7A8GQSSO",
+  "hash": "SFGDL97Z",
   "originalPath": "app/client.__dist__.css"
 },
 "$$47$$":{
@@ -646,7 +646,7 @@
   "js": "$$43$$"
 },
 "$$50$$":{
-  "bytes": 86338,
+  "bytes": 86804,
   "imports": [
     "$$68$$",
     "$$69$$",
@@ -811,7 +811,7 @@
   "path": "node_modules/imba/index.imba"
 },
 "$$69$$":{
-  "bytes": 5206,
+  "bytes": 5276,
   "imports": [
     "$$68$$"
   ],
@@ -855,7 +855,7 @@
   "path": "app/menu-popup.imba"
 },
 "$$75$$":{
-  "bytes": 6192,
+  "bytes": 6217,
   "imports": [],
   "_": "input",
   "path": "styles:app/client.imba"
@@ -1106,7 +1106,7 @@
     "/__assets__/all.css": "$$41$$"
   },
   "mappings": {},
-  "hash": "HNKGDSZF",
+  "hash": "GRT54TAY",
   "srcdir": "..",
   "outdir": ".",
   "path": "server.js.manifest",

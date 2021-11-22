@@ -28,7 +28,7 @@ let settings = {
 		family: "sans, sans-serif"
 		name: "Sans Serif"
 		line-height: 1.6
-		max-width: 30
+		max-width: 60
 }
 let menu_left = -300
 let settings_menu_left = -300
@@ -304,15 +304,17 @@ tag app
 						<title> 'Next'
 						<path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z">
 
-				<menu-popup[ml:auto pos:relative] bind=store.show_page_menu>
-					<button @click=(store.show_page_menu = !store.show_page_menu)>
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-							<title> "Page settings"
-							<path d="M10 12a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0-6a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 12a2 2 0 1 1 0-4 2 2 0 0 1 0 4z">
+				<[ml:auto]>
+				if state.pages.length > 1
+					<menu-popup[pos:relative] bind=store.show_page_menu>
+						<button @click=(store.show_page_menu = !store.show_page_menu)>
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+								<title> "Page settings"
+								<path d="M10 12a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0-6a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 12a2 2 0 1 1 0-4 2 2 0 0 1 0 4z">
 
-						if store.show_page_menu
-							<.popup_menu [y@off:-32px o@off:0] ease>
-								<button.butt[p:8px] @click=removePage!> 'Remove page'
+							if store.show_page_menu
+								<.popup_menu [y@off:-32px o@off:0] ease>
+									<button.butt[p:8px] @click=removePage!> 'Remove page'
 
 
 				<button @click=toggleSettingsMenu>
