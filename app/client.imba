@@ -328,7 +328,7 @@ tag app
 
 
 			<nav.drawer @touchstart=slidestart @touchend=closedrawersend @touchcancel=closedrawersend @touchmove=closingdrawer style="left: {menu_left}px; {boxShadow(menu_left)}{(onzone || inzone) ? 'transition:none;' : ''}">
-				<h1[p:8px d:flex ai:center]>
+				<h1[p:8px d:flex ai:center pr:0]>
 					"Pages"
 					<button[ml:auto] @click=(state.addNewPage!, clearSpace!)>
 						<svg[p:4px] xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
@@ -420,6 +420,7 @@ tag app
 				rd:4px
 				p:4px
 				cursor:pointer
+				size:32px
 
 		.disabled
 			o:0.25
