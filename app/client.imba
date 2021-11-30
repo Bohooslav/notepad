@@ -29,7 +29,13 @@ let settings = {
 		name: "Sans Serif"
 		line-height: 1.6
 		max-width: 60
+
+	get light
+		if this.theme == 'dark' or this.theme == 'black'
+			return 'dark'
+		return 'light'
 }
+
 let menu_left = -300
 let settings_menu_left = -300
 let show_accents = no
@@ -38,6 +44,7 @@ let show_accents = no
 let store = {
 	show_page_menu: no
 	show_fonts: no
+	show_themes: no
 }
 
 const fonts = [
@@ -62,39 +69,38 @@ const fonts = [
 		code: "'Roboto Slab', sans-serif"
 	},
 	{
-		name: "Monospace",
-		code: "monospace"
+		name: "JetBrains Mono",
+		code: "'JetBrains Mono', monospace"
 	}
 ]
 
 const accents = [
 	{
-		name: "green",
-		light: '#9acd32',
-		dark: '#9acd32'
-	},
+		name:"blue"
+		light:'hsl(219,100%,77%)'
+		dark:'hsl(200,100%,32%)'
+	}
 	{
-		name: "blue",
-		light: '#8080FF',
-		dark: '#417690'
-	},
+		name:"green"
+		light:'hsl(80,100%,76%)'
+		dark:'hsl(80,100%,32%)'
+	}
 	{
-		name: "purple",
-		light: '#984da5',
-		dark: '#994EA6'
-	},
+		name:"purple"
+		light:'hsl(291,100%,76%)'
+		dark:'hsl(291,100%,32%)'
+	}
 	{
-		name: "gold",
-		light: '#DAA520',
-		dark: '#E1AF33'
-	},
+		name:"gold"
+		light:'hsl(43,100%,76%)'
+		dark:'hsl(43,100%,32%)'
+	}
 	{
-		name: "red",
-		light: '#DE5454',
-		dark: '#D93A3A'
-	},
+		name:"red"
+		light:'hsl(0,100%,76%)'
+		dark:'hsl(0,100%,32%)'
+	}
 ]
-
 
 
 
@@ -112,12 +118,7 @@ tag app
 		if state.getCookie('theme')
 			settings.theme = state.getCookie('theme')
 			settings.accent = state.getCookie('accent') || settings.accent
-			changeTheme(settings.theme)
-		else
-			if settings.theme == 'dark'
-				changeTheme(settings.theme)
-			else
-				changeTheme('light')
+		changeTheme(settings.theme)
 
 		settings.font.size = parseInt(state.getCookie('font')) || settings.font.size
 		settings.font.family = state.getCookie('font-family') || settings.font.family
@@ -153,7 +154,7 @@ tag app
 
 
 	def boxShadow grade
-		settings.theme == 'light' ? "box-shadow: 0 0 {(grade + 300) / 5}px rgba(0, 0, 0, 0.067);" : ''
+		settings.light == 'light' ? "box-shadow: 0 0 {(grade + 300) / 5}px rgba(0, 0, 0, 0.067);" : ''
 
 	def mousemove e
 		if not MOBILE_PLATFORM
@@ -239,8 +240,8 @@ tag app
 		html.dataset.pukaka = 'yes'
 		settings.theme = theme
 
-		html.dataset.theme = settings.accent + settings.theme
-		html.dataset.light = settings.theme
+		html.dataset.accent = settings.accent + settings.light
+		html.dataset.theme = settings.theme
 
 		state.setCookie('theme', theme)
 
@@ -250,9 +251,10 @@ tag app
 
 	def changeAccent accent
 		settings.accent = accent
-		html.dataset.theme = settings.accent + settings.theme
+		html.dataset.accent = settings.accent + settings.light
 		state.setCookie('accent', accent)
 		show_accents = no
+
 
 	def decreaseFontSize
 		if settings.font.size > 16
@@ -292,7 +294,7 @@ tag app
 			<nav[pos:fixed t:0 l:0 r:0 h:48px d:flex ai:center px:12px g:4px bgc:$bgc]>
 				<button @click=goToPage(state.current_page - 1) .disabled=(state.current_page < 1)>
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-						<title> 'Prev'
+						<title> 'Prev (Alt + Left Arrow)'
 						<path d="M7.05 9.293L6.343 10 12 15.657l1.414-1.414L9.172 10l4.242-4.243L12 4.343z">
 				<button @click=toggleMenu>
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -301,7 +303,7 @@ tag app
 						<path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
 				<button @click=goToPage(state.current_page + 1) .disabled=(state.current_page + 1 >= state.pages.length)>
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-						<title> 'Next'
+						<title> 'Next (Alt + Right Arrow)'
 						<path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z">
 
 				<[ml:auto]>
@@ -314,7 +316,18 @@ tag app
 
 							if store.show_page_menu
 								<.popup_menu [y@off:-32px o@off:0] ease>
-									<button.butt[p:8px] @click=removePage!> 'Remove page'
+									<button.butt[pr:12px h:auto d:flex ai:center g:4px] @click=removePage!>
+										<svg viewBox="0 0 12 16">
+											<title> "Remove page"
+											<path fill-rule="evenodd" clip-rule="evenodd" d="M11 2H9C9 1.45 8.55 1 8 1H5C4.45 1 4 1.45 4 2H2C1.45 2 1 2.45 1 3V4C1 4.55 1.45 5 2 5V14C2 14.55 2.45 15 3 15H10C10.55 15 11 14.55 11 14V5C11.55 5 12 4.55 12 4V3C12 2.45 11.55 2 11 2ZM10 14H3V5H4V13H5V5H6V13H7V5H8V13H9V5H10V14ZM11 4H2V3H11V4Z">
+										'Remove page'
+
+									<button.butt[pr:12px h:auto d:flex ai:center g:4px] @click=(state.addNewPage!, clearSpace!)>
+										<svg[p:4px] xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
+											<title> 'Fresh page'
+											<path d="M6,4 h 4 V 6 H 6 v 4 H 4 V 6 H 0 V 4 H 4 V 0 h 2Z">
+										'Fresh page'
+
 
 
 				<button @click=toggleSettingsMenu>
@@ -324,7 +337,10 @@ tag app
 
 
 			# The heart of the app ;)
-			<mark-down $key=state.page.id page=state.page [w:100% m:auto max-width:{settings.font.max-width}em min-height:calc(100vh - 128px) ff:{settings.font.family} fs:{settings.font.size}px lh:{settings.font.line-height}]>
+			<main [w:100% pos:relative m:auto max-width:{settings.font.max-width}em min-height:calc(100vh - 128px) ff:{settings.font.family} fs:{settings.font.size}px lh:{settings.font.line-height}]>
+				<mark-down[min-height:calc(100vh - 128px)] $key=state.page.id page=state.page>
+				if state.page.text == '' or state.page.text == '<br>'
+					<p[o:0.5 pos:absolute t:0 zi:-1]> 'Here begins your poetry 😉'
 
 
 			<nav.drawer @touchstart=slidestart @touchend=closedrawersend @touchcancel=closedrawersend @touchmove=closingdrawer style="left: {menu_left}px; {boxShadow(menu_left)}{(onzone || inzone) ? 'transition:none;' : ''}">
@@ -335,12 +351,15 @@ tag app
 							<title> 'Fresh page'
 							<path d="M6,4 h 4 V 6 H 6 v 4 H 4 V 6 H 0 V 4 H 4 V 0 h 2Z">
 				for page, i in state.pages
-					<div.page_in_nav @click=goToPage(i)>
+					<div.page_in_nav .active_butt=(i==state.current_page) @click=goToPage(i)>
 						<div.page_preview>
-							let lines = page.title.split('\n')
-							<b> lines.shift!
-							if lines.length
-								<p[fs:0.9em]> lines.join('\n')
+							if page.title
+								let lines = page.title.split('\n')
+								<b> lines.shift!
+								if lines.length > 1
+									<p[fs:0.9em]> lines.join('\n')
+							else
+								<b> "Empty page 🤷🏻‍♂️"
 
 
 			<aside @touchstart=slidestart @touchend=closedrawersend @touchcancel=closedrawersend @touchmove=closingdrawer style="right:{MOBILE_PLATFORM ? settings_menu_left : settings_menu_left ? settings_menu_left : settings_menu_left + 12}px;{boxShadow(settings_menu_left)}{(onzone || inzone) ? 'transition:none;' : ''}">
@@ -351,26 +370,23 @@ tag app
 						<.visible_accent @click=(do show_accents = !show_accents)>
 						<.accents .show_accents=show_accents>
 							for accent in accents when accent.name != settings.accent
-								<.accent @click=changeAccent(accent.name) [bgc: {settings.theme == 'dark' ? accent.light : accent.dark}]>
+								<.accent @click=changeAccent(accent.name) [bgc: {settings.light == 'dark' ? accent.light : accent.dark}]>
 
-				<menu-popup bind=store.show_fonts>
-					<.btnbox.cbtn.aside_button.popup_menu_box [d:flex transform@important:none ai:center pos:relative] @click=(do store.show_fonts = !store.show_fonts)>
-						<span.font_icon> "B"
-						settings.font.name
-						if store.show_fonts
-							<.popup_menu [l:0 y@off:-32px o@off:0] ease>
-								for font in fonts
-									<button.butt[ff: {font.code}] .active_butt=font.name==settings.font.name @click=setFontFamily(font)> font.name
+				<menu-popup bind=store.show_themes>
+					<.btnbox.cbtn.aside_button.popup_menu_box [d:flex transform@important:none ai:center pos:relative] @click=(do store.show_themes = !store.show_themes)>
+						<svg[size:24px ml:4px mr:16px] xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+							<title> 'Night theme'
+							<path d="M167.02 309.34c-40.12 2.58-76.53 17.86-97.19 72.3-2.35 6.21-8 9.98-14.59 9.98-11.11 0-45.46-27.67-55.25-34.35C0 439.62 37.93 512 128 512c75.86 0 128-43.77 128-120.19 0-3.11-.65-6.08-.97-9.13l-88.01-73.34zM457.89 0c-15.16 0-29.37 6.71-40.21 16.45C213.27 199.05 192 203.34 192 257.09c0 13.7 3.25 26.76 8.73 38.7l63.82 53.18c7.21 1.8 14.64 3.03 22.39 3.03 62.11 0 98.11-45.47 211.16-256.46 7.38-14.35 13.9-29.85 13.9-45.99C512 20.64 486 0 457.89 0z">
+						"Theme"
+						if store.show_themes
+							<.popup_menu.themes_popup [l:0 y@off:-32px o@off:0] ease>
+								<button.butt[bgc:black c:white bdr:32px solid white] @click=changeTheme('black')> 'Black'
+								<button.butt[bgc:rgb(4, 6, 12) c:rgb(255, 238, 238) bdr:32px solid rgb(255, 238, 238)] @click=changeTheme('dark')> 'Night'
+								<button.butt[bgc:#f1f1f1 c:black bdr:32px solid black] @click=changeTheme('gray')> 'Gray'
+								<button.butt[bgc:rgb(235, 219, 183) c:rgb(46, 39, 36) bdr:32px solid rgb(46, 39, 36)] @click=changeTheme('sepia')> 'Sepia'
+								<button.butt[bgc:rgb(255, 238, 238) c:rgb(4, 6, 12) bdr:32px solid rgb(4, 6, 12)] @click=changeTheme('light')> 'Light'
+								<button.butt[bgc:white c:black bdr:32px solid black] @click=changeTheme('white')> 'White'
 
-				<.btnbox>
-					<svg.cbtn[p:8px w:50%] @click=changeTheme('dark') enable-background="new 0 0 24 24" viewBox="0 0 24 24" >
-						<title> 'Night theme'
-						<g>
-							<path d="M11.1,12.08C8.77,7.57,10.6,3.6,11.63,2.01C6.27,2.2,1.98,6.59,1.98,12c0,0.14,0.02,0.28,0.02,0.42 C2.62,12.15,3.29,12,4,12c1.66,0,3.18,0.83,4.1,2.15C9.77,14.63,11,16.17,11,18c0,1.52-0.87,2.83-2.12,3.51 c0.98,0.32,2.03,0.5,3.11,0.5c3.5,0,6.58-1.8,8.37-4.52C18,17.72,13.38,16.52,11.1,12.08z">
-						<path d="M7,16l-0.18,0C6.4,14.84,5.3,14,4,14c-1.66,0-3,1.34-3,3s1.34,3,3,3c0.62,0,2.49,0,3,0c1.1,0,2-0.9,2-2 C9,16.9,8.1,16,7,16z">
-					<svg.cbtn[w:50% p:8px] @click=changeTheme('light') viewBox="0 0 20 20">
-						<title> 'Day theme'
-						<path d="M10 14a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM9 1a1 1 0 1 1 2 0v2a1 1 0 1 1-2 0V1zm6.65 1.94a1 1 0 1 1 1.41 1.41l-1.4 1.4a1 1 0 1 1-1.41-1.41l1.4-1.4zM18.99 9a1 1 0 1 1 0 2h-1.98a1 1 0 1 1 0-2h1.98zm-1.93 6.65a1 1 0 1 1-1.41 1.41l-1.4-1.4a1 1 0 1 1 1.41-1.41l1.4 1.4zM11 18.99a1 1 0 1 1-2 0v-1.98a1 1 0 1 1 2 0v1.98zm-6.65-1.93a1 1 0 1 1-1.41-1.41l1.4-1.4a1 1 0 1 1 1.41 1.41l-1.4 1.4zM1.01 11a1 1 0 1 1 0-2h1.98a1 1 0 1 1 0 2H1.01zm1.93-6.65a1 1 0 1 1 1.41-1.41l1.4 1.4a1 1 0 1 1-1.41 1.41l-1.4-1.4z">
 
 				<.btnbox>
 					<button[p: 12px fs: 20px].cbtn @click=decreaseFontSize title='Decreace font size'> "B-"
@@ -400,6 +416,26 @@ tag app
 							<path d="M40.5,7 L34.75,1.25 L36,-5.17110888e-16 L44,8 L43.375,8.625 L36,16 L34.75,14.75 L40.5,9 L26,9 L26,7 L40.5,7 Z">
 
 
+				<menu-popup bind=store.show_fonts>
+					<.btnbox.cbtn.aside_button.popup_menu_box [d:flex transform@important:none ai:center pos:relative] @click=(do store.show_fonts = !store.show_fonts)>
+						<span.font_icon> "B"
+						settings.font.name
+						if store.show_fonts
+							<.popup_menu [l:0 y@off:-32px o@off:0] ease>
+								for font in fonts
+									<button.butt[ff: {font.code}] .active_butt=font.name==settings.font.name @click=setFontFamily(font)> font.name
+
+
+			<global
+				@hotkey("mod+s").capture.prevent.stop
+				@hotkey("mod+q").capture.prevent.stop=(window.open('', '_parent', '').close();)
+
+				@hotkey('alt+right').prevent.stop.capture=goToPage(state.current_page + 1)
+				@hotkey('alt+left').prevent.stop.capture=goToPage(state.current_page - 1)
+
+				@hotkey('alt+n').capture.stop.prevent=(state.addNewPage!, clearSpace!)
+				>
+
 
 
 	css
@@ -409,9 +445,12 @@ tag app
 		p:64px 12px
 		min-height:100%
 
+
+	css
 		nav
 			svg
 				size:24px
+				min-width:24px
 				fill:$c
 
 			button
@@ -451,7 +490,7 @@ tag app
 		.page_in_nav
 			p:8px
 			rd:8px
-			bgc@hover:$acc-bgc
+			bgc@hover:$acc-bgc-hover
 			cursor:pointer
 
 		.page_preview
@@ -525,6 +564,11 @@ tag app
 		.show_accents .accent
 			margin: 0 -34px 0
 
+		.themes_popup button
+			fw:900
+
+		.active_butt
+			bgc: $acc-bgc
 
 
 imba.mount <app>

@@ -366,7 +366,7 @@
   "public": true,
   "path": "public/__assets__/all.css",
   "asset": "$$41$$",
-  "hash": "VXE9KMPF",
+  "hash": "RUGCEENG",
   "originalPath": "all.__dist__.css",
   "url": "/__assets__/all.css"
 },
@@ -437,10 +437,10 @@
     ],
     [
       "$$49$$",
-      679
+      684
     ]
   ],
-  "bytes": 888,
+  "bytes": 893,
   "source": "$$49$$",
   "_": "output",
   "path": "public/index.html",
@@ -450,7 +450,7 @@
     "$$47$$",
     "$$48$$"
   ],
-  "hash": "7IQWY41M",
+  "hash": "VXQZ85TA",
   "originalPath": "app/index.__dist__.html",
   "url": "/app/index.html"
 },
@@ -458,7 +458,7 @@
   "imports": [],
   "exports": [],
   "inputs": [],
-  "bytes": 158991,
+  "bytes": 206747,
   "source": "$$50$$",
   "_": "output",
   "path": "public/__assets__/app/client.js.map",
@@ -466,7 +466,7 @@
   "url": "/__assets__/app/client.js.map",
   "type": "map",
   "dependencies": [],
-  "hash": "OOLQKTWD"
+  "hash": "JCPUWDOU"
 },
 "$$45$$":{
   "imports": [],
@@ -491,7 +491,7 @@
     ],
     [
       "$$55$$",
-      2980
+      2993
     ],
     [
       "$$56$$",
@@ -523,7 +523,7 @@
     ],
     [
       "$$63$$",
-      2544
+      2558
     ],
     [
       "$$64$$",
@@ -539,15 +539,15 @@
     ],
     [
       "$$67$$",
-      5742
+      5738
     ],
     [
       "$$68$$",
-      0
+      5120
     ],
     [
       "$$69$$",
-      1118
+      4077
     ],
     [
       "$$70$$",
@@ -555,11 +555,11 @@
     ],
     [
       "$$71$$",
-      0
+      1118
     ],
     [
       "$$72$$",
-      2198
+      0
     ],
     [
       "$$73$$",
@@ -567,18 +567,26 @@
     ],
     [
       "$$74$$",
-      1113
+      2209
     ],
     [
       "$$75$$",
       0
     ],
     [
+      "$$76$$",
+      1113
+    ],
+    [
+      "$$77$$",
+      0
+    ],
+    [
       "$$50$$",
-      22315
+      26195
     ]
   ],
-  "bytes": 75436,
+  "bytes": 88547,
   "map": "$$44$$",
   "source": "$$50$$",
   "css": "$$46$$",
@@ -588,30 +596,30 @@
   "url": "/__assets__/app/client.js",
   "type": "js",
   "dependencies": [],
-  "hash": "OOLQKTWD",
+  "hash": "JCPUWDOU",
   "originalPath": "app/client.__dist__.js"
 },
 "$$46$$":{
   "imports": [],
   "inputs": [
     [
-      "$$75$$",
-      5767
+      "$$77$$",
+      7145
     ],
     [
-      "$$70$$",
-      2867
-    ],
-    [
-      "$$71$$",
-      67
+      "$$72$$",
+      3594
     ],
     [
       "$$73$$",
+      67
+    ],
+    [
+      "$$75$$",
       25
     ]
   ],
-  "bytes": 8727,
+  "bytes": 10832,
   "source": "$$50$$",
   "_": "output",
   "path": "public/__assets__/app/client.css",
@@ -619,7 +627,7 @@
   "url": "/__assets__/app/client.css",
   "type": "css",
   "dependencies": [],
-  "hash": "WO6VSIHN",
+  "hash": "FMEQUM6G",
   "originalPath": "app/client.__dist__.css"
 },
 "$$47$$":{
@@ -636,7 +644,7 @@
   "asset": "$$45$$"
 },
 "$$49$$":{
-  "bytes": 776,
+  "bytes": 781,
   "imports": [
     "$$47$$",
     "$$48$$"
@@ -646,14 +654,14 @@
   "js": "$$43$$"
 },
 "$$50$$":{
-  "bytes": 86870,
+  "bytes": 99405,
   "imports": [
-    "$$68$$",
-    "$$69$$",
-    "$$76$$",
-    "$$72$$",
+    "$$70$$",
+    "$$71$$",
+    "$$78$$",
     "$$74$$",
-    "$$75$$"
+    "$$76$$",
+    "$$77$$"
   ],
   "_": "input",
   "path": "app/client.imba",
@@ -803,79 +811,94 @@
   "path": "node_modules/imba/src/imba/events/core.imba"
 },
 "$$68$$":{
+  "bytes": 27367,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/imba/src/imba/events/mousetrap.mjs"
+},
+"$$69$$":{
+  "bytes": 24612,
+  "imports": [
+    "$$54$$",
+    "$$68$$"
+  ],
+  "_": "input",
+  "path": "node_modules/imba/src/imba/events/hotkey.imba"
+},
+"$$70$$":{
   "bytes": 361,
   "imports": [
-    "$$77$$"
+    "$$79$$"
   ],
   "_": "input",
   "path": "node_modules/imba/index.imba"
 },
-"$$69$$":{
+"$$71$$":{
   "bytes": 5276,
   "imports": [
-    "$$68$$"
+    "$$70$$"
   ],
   "_": "input",
   "path": "app/state.imba"
 },
-"$$70$$":{
-  "bytes": 3165,
+"$$72$$":{
+  "bytes": 3939,
   "imports": [],
   "_": "input",
   "path": "styles:app/global-css.imba"
 },
-"$$71$$":{
+"$$73$$":{
   "bytes": 76,
   "imports": [],
   "_": "input",
   "path": "styles:app/mark-down.imba"
 },
-"$$72$$":{
-  "bytes": 11268,
+"$$74$$":{
+  "bytes": 11375,
   "imports": [
-    "$$68$$",
-    "$$71$$"
+    "$$70$$",
+    "$$73$$"
   ],
   "_": "input",
   "path": "app/mark-down.imba"
 },
-"$$73$$":{
+"$$75$$":{
   "bytes": 29,
   "imports": [],
   "_": "input",
   "path": "styles:app/menu-popup.imba"
 },
-"$$74$$":{
+"$$76$$":{
   "bytes": 4216,
   "imports": [
-    "$$68$$",
-    "$$73$$"
+    "$$70$$",
+    "$$75$$"
   ],
   "_": "input",
   "path": "app/menu-popup.imba"
 },
-"$$75$$":{
-  "bytes": 6374,
+"$$77$$":{
+  "bytes": 8102,
   "imports": [],
   "_": "input",
   "path": "styles:app/client.imba"
 },
-"$$76$$":{
-  "bytes": 4316,
+"$$78$$":{
+  "bytes": 5416,
   "imports": [
-    "$$70$$"
+    "$$72$$"
   ],
   "_": "input",
   "path": "app/global-css.imba"
 },
-"$$77$$":{
+"$$79$$":{
   "bytes": 3000,
   "imports": [
     "$$51$$",
     "$$52$$",
-    "$$78$$",
-    "$$79$$",
     "$$80$$",
+    "$$81$$",
+    "$$82$$",
     "$$54$$",
     "$$55$$",
     "$$56$$",
@@ -890,77 +913,77 @@
     "$$67$$",
     "$$66$$",
     "$$65$$",
-    "$$81$$",
-    "$$82$$",
     "$$83$$",
     "$$84$$",
     "$$85$$",
     "$$86$$",
-    "$$87$$"
+    "$$87$$",
+    "$$69$$",
+    "$$88$$"
   ],
   "_": "input",
   "path": "node_modules/imba/src/imba/imba.imba"
 },
-"$$78$$":{
+"$$80$$":{
   "bytes": 750,
   "imports": [],
   "_": "input",
   "path": "node_modules/imba/src/imba/manifest.web.imba"
 },
-"$$79$$":{
+"$$81$$":{
   "bytes": 370,
   "imports": [],
   "_": "input",
   "path": "node_modules/imba/src/imba/process.web.imba"
 },
-"$$80$$":{
+"$$82$$":{
   "bytes": 7538,
   "imports": [
-    "$$78$$"
+    "$$80$$"
   ],
   "_": "input",
   "path": "node_modules/imba/src/imba/asset.imba"
 },
-"$$81$$":{
+"$$83$$":{
   "bytes": 3093,
   "imports": [
     "$$54$$",
     "$$51$$",
     "$$66$$",
-    "$$88$$"
+    "$$89$$"
   ],
   "_": "input",
   "path": "node_modules/imba/src/imba/events/pointer.imba"
 },
-"$$82$$":{
+"$$84$$":{
   "bytes": 64659,
   "imports": [
     "$$54$$",
     "$$51$$",
-    "$$88$$"
+    "$$89$$"
   ],
   "_": "input",
   "path": "node_modules/imba/src/imba/events/touch.imba"
 },
-"$$83$$":{
+"$$85$$":{
   "bytes": 13806,
   "imports": [
     "$$54$$",
-    "$$88$$"
+    "$$89$$"
   ],
   "_": "input",
   "path": "node_modules/imba/src/imba/events/intersect.imba"
 },
-"$$84$$":{
+"$$86$$":{
   "bytes": 7459,
   "imports": [
     "$$54$$",
-    "$$88$$"
+    "$$89$$"
   ],
   "_": "input",
   "path": "node_modules/imba/src/imba/events/resize.imba"
 },
-"$$85$$":{
+"$$87$$":{
   "bytes": 3799,
   "imports": [
     "$$54$$"
@@ -968,16 +991,7 @@
   "_": "input",
   "path": "node_modules/imba/src/imba/events/selection.imba"
 },
-"$$86$$":{
-  "bytes": 24612,
-  "imports": [
-    "$$54$$",
-    "$$89$$"
-  ],
-  "_": "input",
-  "path": "node_modules/imba/src/imba/events/hotkey.imba"
-},
-"$$87$$":{
+"$$88$$":{
   "bytes": 49770,
   "imports": [
     "$$90$$",
@@ -993,17 +1007,11 @@
   "_": "input",
   "path": "node_modules/imba/src/imba/router/index.imba"
 },
-"$$88$$":{
+"$$89$$":{
   "bytes": 8214,
   "imports": [],
   "_": "input",
   "path": "node_modules/imba/src/imba/events/helpers.imba"
-},
-"$$89$$":{
-  "bytes": 27367,
-  "imports": [],
-  "_": "input",
-  "path": "node_modules/imba/src/imba/events/mousetrap.mjs"
 },
 "$$90$$":{
   "bytes": 14160,
@@ -1106,7 +1114,7 @@
     "/__assets__/all.css": "$$41$$"
   },
   "mappings": {},
-  "hash": "MXWEFIMK",
+  "hash": "HTABOKVR",
   "srcdir": "..",
   "outdir": ".",
   "path": "server.js.manifest",

@@ -1,58 +1,87 @@
 global css
+	html[data-theme="light"]
+		$bgc: hsl(0, 100%, 97%)
+		$c: rgb(4, 6, 12)
+		$acc-bgc: hsl(276, 100%, 90%)
+		$acc-bgc-hover: hsl(276, 100%, 94%)
+		$disabled: rgb(86, 82, 78)
 
-	@root[data-light="light"]
-		--bgc: white
-		--c: black
-		--acc-bgc: hsl(276, 100%, 90%)
-		--acc-bgc-hover: hsl(276, 100%, 94%)
+	html[data-theme="dark"]
+		$bgc: rgb(4, 6, 12)
+		$c: rgb(255, 238, 238)
+		$acc-bgc: #252749
+		$acc-bgc-hover: #383a6d
+		$disabled: rgb(168, 162, 159)
+
+	html[data-theme="sepia"]
+		$bgc: rgb(235, 219, 183)
+		$c: rgb(46, 39, 36)
+		$acc-bgc: rgb(226, 204, 152)
+		$acc-bgc-hover: rgb(230, 211, 167)
+		$disabled: rgb(86, 82, 78)
+
+	html[data-theme="gray"]
+		$bgc: #f1f1f1
+		$c: black
+		$acc-bgc: #d3d3d3
+		$acc-bgc-hover: #e5e5e5
+		$disabled: rgb(86, 82, 78)
+
+	html[data-theme="black"]
+		$bgc: black
+		$c: white
+		$acc-bgc: #252749
+		$acc-bgc-hover: #383a6d
+		$disabled: rgb(168, 162, 159)
+
+	html[data-theme="white"]
+		$bgc: white
+		$c: black
+		$acc-bgc: hsl(276, 100%, 90%)
+		$acc-bgc-hover: hsl(276, 100%, 94%)
+		$disabled: rgb(86, 82, 78)
 
 
-	@root[data-light="dark"]
-		--bgc: black
-		--c: white
-		--acc-bgc: #252749
-		--acc-bgc-hover: #383a6d
 
+	html[data-accent="bluedark"]
+		$acc-color: hsl(240, 100%, 75%)
+		$acc-color-hover: hsla(219, 100%, 77%, 0.996)
 
-	html[data-theme="bluedark"]
-		$acc-color: rgb(128, 128, 255)
-		$acc-color-hover: rgba(150, 182, 243, 0.996)
+	html[data-accent="bluelight"]
+		$acc-color: hsl(240, 100%, 24%)
+		$acc-color-hover: hsla(200, 100%, 32%, 0.996)
 
-	html[data-theme="bluelight"]
-		$acc-color: navy
-		$acc-color-hover: rgba(65, 118, 144, 0.996)
+	html[data-accent="greendark"]
+		$acc-color: hsl(80, 100%, 70%)
+		$acc-color-hover: hsla(80, 100%, 76%, 0.996)
 
-	html[data-theme="greendark"]
-		$acc-color: olivedrab
-		$acc-color-hover: yellowgreen
+	html[data-accent="greenlight"]
+		$acc-color: hsl(80, 100%, 24%)
+		$acc-color-hover: hsla(80, 100%, 32%, 0.996)
 
-	html[data-theme="greenlight"]
-		$acc-color: olivedrab
-		$acc-color-hover: yellowgreen
+	html[data-accent="purpledark"]
+		$acc-color: hsl(291, 100%, 70%)
+		$acc-color-hover: hsla(291, 100%, 76%, 0.996)
 
-	html[data-theme="purpledark"]
-		$acc-color: rgb(152, 77, 165)
-		$acc-color-hover: rgba(177, 113, 188, 0.996)
+	html[data-accent="purplelight"]
+		$acc-color: hsl(291, 100%, 24%)
+		$acc-color-hover: hsla(291, 100%, 32%, 0.996)
 
-	html[data-theme="purplelight"]
-		$acc-color: rgb(102, 52, 111)
-		$acc-color-hover: rgba(153, 78, 166, 0.996)
+	html[data-accent="golddark"]
+		$acc-color: hsl(43, 100%, 70%)
+		$acc-color-hover: hsla(43, 100%, 76%, 0.996)
 
-	html[data-theme="golddark"]
-		$acc-color: rgb(218, 165, 32)
-		$acc-color-hover: rgba(231, 193, 95, 0.996)
+	html[data-accent="goldlight"]
+		$acc-color: hsl(43, 100%, 24%)
+		$acc-color-hover: hsla(43, 100%, 32%, 0.996)
 
-	html[data-theme="goldlight"]
-		$acc-color: rgb(169, 128, 25)
-		$acc-color-hover: rgba(225, 175, 51, 0.996)
+	html[data-accent="reddark"]
+		$acc-color: hsl(0, 100%, 70%)
+		$acc-color-hover: hsla(0, 100%, 76%, 0.996)
 
-	html[data-theme="reddark"]
-		$acc-color: rgb(222, 84, 84)
-		$acc-color-hover: rgba(230, 122, 122, 0.996)
-
-	html[data-theme="redlight"]
-		$acc-color: rgb(137, 26, 26)
-		$acc-color-hover: rgba(217, 58, 58, 0.996)
+	html[data-accent="redlight"]
+		$acc-color: hsl(0, 100%, 24%)
+		$acc-color-hover: hsla(0, 100%, 32%, 0.996)
 
 
 	html[data-pukaka="yes"] *
@@ -69,15 +98,13 @@ global css
 		-webkit-overflow-scrolling: touch
 		-webkit-tap-highlight-color: transparent
 
-		transition-timing-function: ease
+		transition-timing-function: ease-in-out
 		transition-delay: 0
 		transition-duration: 500ms
 		transition-property: color, background, width, height, transform, opacity, max-height, max-width, top, left, bottom, right, visibility, fill, stroke, margin, padding, border
 
 	*::selection
-		text-decoration-color: $bgc
-		color: $bgc
-		background-color: $c
+		background-color: $acc-bgc
 
 	::-webkit-scrollbar
 		width: 12px
@@ -124,11 +151,12 @@ global css
 	.popup_menu .butt
 		background: transparent @hover:$acc-bgc-hover
 		color: $c
+		ws:pre
 		cursor: pointer
 		padding: 12px
 		font-size: 16px
 		display: block
 		width: 100%
 		text-align: left
-		min-width: 128px
+		min-width: 148px
 

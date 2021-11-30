@@ -16,6 +16,7 @@ export tag mark-down
 		page.title = ''
 		let lines_count = 0
 		for line in innerText.split('\n')
+			line = line.trim()
 			if line == ''
 				continue
 

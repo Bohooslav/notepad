@@ -3,11 +3,11 @@ var VERSION = "0.0.0.1"; // Version of the off-line cache (change this value eve
 var CACHE_NAME = APP_PREFIX + VERSION;
 var URLS = [
   // Add URL you want to cache in this list.
-  "/", // If you have separate JS/CSS files,
-  "/index.html", // add path to those files here
-  "/static/app/client.css",
-  "/static/app/client.js",
-  "/static/app/client.js.map",
+  "/notepad/", // If you have separate JS/CSS files,
+  "/notepad/index.html", // add path to those files here
+  "/notepad/static/app/client.css",
+  "/notepad/static/app/client.js",
+  "/notepad/static/app/client.js.map",
 ];
 
 // Respond with cached resources
