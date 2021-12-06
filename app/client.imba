@@ -25,8 +25,8 @@ let settings = {
 	accent: 'blue'
 	font:
 		size: 16
-		family: "sans, sans-serif"
-		name: "Sans Serif"
+		family: "'JetBrains Mono', monospace"
+		name: "JetBrains Mono"
 		line-height: 1.6
 		max-width: 60
 
@@ -45,12 +45,17 @@ let store = {
 	show_page_menu: no
 	show_fonts: no
 	show_themes: no
+	nav_search: ''
 }
 
 const fonts = [
 	{
 		name: "Sans Serif",
 		code: "sans, sans-serif"
+	},
+	{
+		name: "JetBrains Mono",
+		code: "'JetBrains Mono', monospace"
 	},
 	{
 		name: "David Libre",
@@ -67,10 +72,6 @@ const fonts = [
 	{
 		name: "Roboto Slab",
 		code: "'Roboto Slab', sans-serif"
-	},
-	{
-		name: "JetBrains Mono",
-		code: "'JetBrains Mono', monospace"
 	}
 ]
 
@@ -219,10 +220,13 @@ tag app
 
 
 	def goToPage index
-		if 0 <= index < state.pages.length
-			state.current_page = index
-			state.setCookie('current_page', index)
-			clearSpace!
+		if index == -1
+			index = state.pages.length - 1
+		elif index == state.pages.length
+			index = 0
+		state.current_page = index
+		state.setCookie('current_page', index)
+		clearSpace!
 
 	def removePage
 		let sure = window.confirm("Are you sure you want to remove this page forever?")
@@ -350,7 +354,9 @@ tag app
 						<svg[p:4px] xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
 							<title> 'Fresh page'
 							<path d="M6,4 h 4 V 6 H 6 v 4 H 4 V 6 H 0 V 4 H 4 V 0 h 2Z">
-				for page, i in state.pages
+				let nothing_found = yes
+				for page, i in state.pages when store.nav_search.toLowerCase! in page.title.toLowerCase!
+					nothing_found = no
 					<div.page_in_nav .active_butt=(i==state.current_page) @click=goToPage(i)>
 						<div.page_preview>
 							if page.title
@@ -360,6 +366,15 @@ tag app
 									<p[fs:0.9em]> lines.join('\n')
 							else
 								<b> "Empty page 🤷🏻‍♂️"
+				if nothing_found
+					<p[ws:pre fs:14px ta:center pt:16px]> '(ಠ╭╮ಠ)  ¯\\_(ツ)_/¯  ノ( ゜-゜ノ)'
+
+				<[d:flex h:48px pos:absolute b:0px l:0px w:100%]>
+					<input$nav_search bind=store.nav_search [h:100% w:100% font:inherit c:inherit bg:$bgc bd:none px:8px] placeholder="Search">
+					<svg[h:100% w:40px pr:16px fill:$c @hover:$acc-color-hover cursor:pointer] viewBox="0 0 12 12" width="24px" height="24px" @click=($nav_search.focus!)>
+						<title> "Search"
+						<path d="M9.827 8.584l1.95 1.951a.879.879 0 0 1-1.242 1.242l-1.95-1.95c-2.137 1.55-5.12 1.383-7.02-.517-2.108-2.108-2.083-5.55.055-7.69C3.76-.518 7.202-.543 9.31 1.565c1.9 1.9 2.067 4.883.517 7.02zm-1.256-.013c1.721-1.72 1.741-4.49.045-6.187C6.92.688 4.15.708 2.429 2.43.708 4.149.688 6.919 2.384 8.616c1.696 1.696 4.466 1.676 6.187-.045z">
+					
 
 
 			<aside @touchstart=slidestart @touchend=closedrawersend @touchcancel=closedrawersend @touchmove=closingdrawer style="right:{MOBILE_PLATFORM ? settings_menu_left : settings_menu_left ? settings_menu_left : settings_menu_left + 12}px;{boxShadow(settings_menu_left)}{(onzone || inzone) ? 'transition:none;' : ''}">
