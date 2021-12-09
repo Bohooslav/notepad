@@ -2,6 +2,7 @@ import './state'
 import './global-css'
 import './mark-down'
 import './menu-popup'
+import {svg_paths} from './svg_paths'
 
 let html = document.documentElement
 
@@ -20,6 +21,12 @@ let MOBILE_PLATFORM = no
 if isMobile && isSmallScreen && document.cookie.indexOf( "mobileFullSiteClicked=") < 0
 	MOBILE_PLATFORM = yes
 
+
+let menu_left = -300
+let settings_menu_left = -300
+let show_accents = no
+let dial_window = ''
+
 let settings = {
 	theme: 'dark'
 	accent: 'blue'
@@ -36,16 +43,12 @@ let settings = {
 		return 'light'
 }
 
-let menu_left = -300
-let settings_menu_left = -300
-let show_accents = no
-
-
 let store = {
 	show_page_menu: no
 	show_fonts: no
 	show_themes: no
 	nav_search: ''
+	search_input: ''
 }
 
 const fonts = [
@@ -106,6 +109,9 @@ const accents = [
 
 
 tag app
+	search_results = []
+
+
 	def setup
 		# Detect change of dark/light mode
 		window.matchMedia('(prefers-color-scheme: dark)')
@@ -131,6 +137,8 @@ tag app
 	def clearSpace
 		menu_left = -300
 		settings_menu_left = -300
+		dial_window = ''
+		$main.firstChild.focus!
 		imba.commit!
 
 	def toggleMenu
@@ -228,6 +236,13 @@ tag app
 		state.setCookie('current_page', index)
 		clearSpace!
 
+	def setPage id
+		state.current_page = state.pages.indexOf(state.pages.find(do(el) return el.id == id))
+		state.setCookie('current_page', state.current_page)
+		clearSpace!
+		
+
+
 	def removePage
 		let sure = window.confirm("Are you sure you want to remove this page forever?")
 		if state.pages[state.current_page] && sure
@@ -292,10 +307,51 @@ tag app
 			settings.font.max-width -= 15
 		state.setCookie('max-width', settings.font.max-width)
 
+	def scoreSearch item, search_query
+		item = item.toLowerCase!
+		search_query = search_query.toLowerCase!
+		let score = 0
+		let p = 0 # Position within the `item`
+		# Look through each character of the search string, stopping at the end(s)...
+
+		for i in [0 ... search_query.length]
+			# Figure out if the current letter is found in the rest of the `item`.
+			const index = item.indexOf(search_query[i], p)
+			# If not, stop here.
+			if index < 0
+				break
+			#  If it is, add to the score...
+			score++
+			#  ... and skip the position within `item` forward.
+			p = index
+
+		return score
+
+
+	def searchNotes
+		search_results = []
+
+		const query = store.search_input.trim!.toLowerCase!
+
+		for page in state.pages # in aa given translations book
+			const score = scoreSearch(page.title, query)
+			if score > query.length * 0.75
+				search_results.push({
+					id: page.id
+					title: page.title
+				})
+
+		search_results = search_results.sort(do |a, b| b.score - a.score)
+
+	def showMainSearch
+		clearSpace!
+		dial_window = 'search'
+		setTimeout(&, 100) do $mainsearch.focus!
+
 	def render
 		<self @mousemove=mousemove>
 
-			<nav[pos:fixed t:0 l:0 r:0 h:48px d:flex ai:center px:12px g:4px bgc:$bgc]>
+			<nav[pos:fixed t:0 l:0 r:0 zi:1 h:48px d:flex ai:center px:12px g:4px bgc:$bgc]>
 				<button @click=goToPage(state.current_page - 1) .disabled=(state.current_page < 1)>
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
 						<title> 'Prev (Alt + Left Arrow)'
@@ -341,8 +397,8 @@ tag app
 
 
 			# The heart of the app ;)
-			<main [w:100% pos:relative m:auto max-width:{settings.font.max-width}em min-height:calc(100vh - 128px) ff:{settings.font.family} fs:{settings.font.size}px lh:{settings.font.line-height}]>
-				<mark-down[min-height:calc(100vh - 128px)] $key=state.page.id page=state.page>
+			<main$main [w:100% pos:relative m:auto max-width:{settings.font.max-width}em min-height:calc(100vh - 128px) ff:{settings.font.family} fs:{settings.font.size}px lh:{settings.font.line-height}]>
+				<mark-down[min-height:calc(100vh - 128px)] key=state.page.id page=state.page>
 				if state.page.text == '' or state.page.text == '<br>'
 					<p[o:0.5 pos:absolute t:0 zi:-1]> 'Here begins your poetry 😉'
 
@@ -386,6 +442,11 @@ tag app
 						<.accents .show_accents=show_accents>
 							for accent in accents when accent.name != settings.accent
 								<.accent @click=changeAccent(accent.name) [bgc: {settings.light == 'dark' ? accent.light : accent.dark}]>
+				<button.btnbox.cbtn.aside_button @click=showMainSearch>
+					<svg[size:24px ml:4px mr:16px] viewBox="0 0 12 12" width="24px" height="24px">
+						<title> 'Search'
+						<path d=svg_paths.search>
+					'Search'
 
 				<menu-popup bind=store.show_themes>
 					<.btnbox.cbtn.aside_button.popup_menu_box [d:flex transform@important:none ai:center pos:relative] @click=(do store.show_themes = !store.show_themes)>
@@ -441,14 +502,49 @@ tag app
 									<button.butt[ff: {font.code}] .active_butt=font.name==settings.font.name @click=setFontFamily(font)> font.name
 
 
+
+
+			if dial_window.length
+				<section [pos:fixed t:0 b:0 r:0 l:0 bgc:#000A h:100% d:flex jc:center p:14vh 0 @lt-sm:0 o@off:0 visibility@off:hidden zi:3] @click=clearSpace ease>
+
+					<div[pos:relative max-height:72vh @lt-sm:100vh max-width:64em @lt-sm:100% w:80% @lt-sm:100% bgc:$bgc bd:1px solid $acc-bgc-hover @lt-sm:none rd:16px @lt-sm:0 p:12px 24px @lt-sm:12px scale@off:0.75] .height_auto=(!search_results.length && dial_window=='search') @click.stop>
+
+						if dial_window == 'search'
+							<article.search_hat [pos:relative]>
+								<svg [fill@hover:firebrick] @click=clearSpace viewBox="0 0 20 20">
+									<title> 'Close'
+									<path[m:auto] d=svg_paths.close>
+
+								<input$mainsearch[w:100% bg:transparent font:inherit c:inherit p:0 8px fs:1.2em min-width:128px bd:none bxs:none] bind=store.search_input minLength=2 type='text' placeholder="Search" aria-label="Search" @input=searchNotes>
+
+								<svg [w:24px min-width:24px mr:8px fill@hover:$acc-color] viewBox="0 0 12 12" width="24px" height="24px" @click=$mainsearch.focus!>
+									<title> "Search"
+									<path d=svg_paths.search>
+
+							if search_results.length
+								<article[pb:32px]>
+									<p[ta:left p:8px 0 fs:16px c:$disabled]> "{search_results.length} results:"
+
+									<>
+										for result, key in search_results
+											<div.page_in_nav innerHTML=result.title @click=setPage(result.id)>
+
+									unless search_results.length
+										<div[display:flex flex-direction:column height:100% justify-content:center align-items:center]>
+											<p> '(ಠ╭╮ಠ)  ¯\\_(ツ)_/¯  ノ( ゜-゜ノ)'
+
+
 			<global
-				@hotkey("mod+s").capture.prevent.stop
-				@hotkey("mod+q").capture.prevent.stop=(window.open('', '_parent', '').close();)
+				@hotkey("mod+s").force.prevent.stop
+				@hotkey("mod+q").force.prevent.stop=(window.open('', '_parent', '').close();)
 
-				@hotkey('alt+right').prevent.stop.capture=goToPage(state.current_page + 1)
-				@hotkey('alt+left').prevent.stop.capture=goToPage(state.current_page - 1)
+				@hotkey('alt+right').prevent.stop.force=goToPage(state.current_page + 1)
+				@hotkey('alt+left').prevent.stop.force=goToPage(state.current_page - 1)
 
-				@hotkey('alt+n').capture.stop.prevent=(state.addNewPage!, clearSpace!)
+				@hotkey('alt+n').force.stop.prevent=(state.addNewPage!, clearSpace!)
+
+				@hotkey('mod+shift+f').force.stop.prevent=showMainSearch
+				@hotkey('esc').force.stop.prevent=clearSpace
 				>
 
 
@@ -584,6 +680,31 @@ tag app
 
 		.active_butt
 			bgc: $acc-bgc
+
+		.height_auto
+			max-height@important:76px
+			mb:auto
+			border-bottom:1px solid $acc-bgc-hover
+
+		.search_hat
+			display: flex
+
+		.search_hat svg
+			min-width: 24px
+			width: 26px
+			height: 50px
+			padding: 12px 0
+			fill: $c
+			cursor: pointer
+
+		# .search_hat h1
+		# 	text-align: center
+		# 	margin: auto
+		# 	-webkit-line-clamp: 2
+		# 	overflow: hidden
+		# 	display: -webkit-box
+		# 	-webkit-box-orient: vertical
+		# 	font-size: 1em
 
 
 imba.mount <app>

@@ -22,7 +22,7 @@ class State
 
 	def addNewPage
 		let now = new Date(Date.now!)
-		let text = "Fresh page № {pages.length + 1}\nCreated at " + now.toLocaleString!
+		let text = "# Fresh page № {pages.length + 1}\nCreated at " + now.toLocaleString!
 		current_page = pages.length
 		pages.push {
 			id: Math.round(Math.random! * 100000000)
@@ -38,10 +38,10 @@ class State
 	# 	return res.json
 
 
+
+
 let state = new State
 
 extend tag Element
 	get state
 		return state
-
-export default state
