@@ -2,12 +2,13 @@ const formatBlock = 'formatBlock'
 const defaultParagraphSeparator = 'defaultParagraphSeparator' || 'div'
 
 
-export tag mark-down
+tag mark-down
 	page = {}
 	inputStream = "Hey there"
 	outputStream = "<p>Hey there<p>"
 	
 	def mount
+		log 'HEREEE', self.nodeName
 		inputStream = page.text
 		outputStream = page.text
 		imba.commit!
@@ -42,18 +43,6 @@ export tag mark-down
 				when 'KeyU'
 					event.preventDefault()
 					exec('underline')
-				# when 'KeyE'
-				# 	event.preventDefault()
-				# 	exec('justifycenter')
-				# when 'KeyR'
-				# 	event.preventDefault()
-				# 	exec('justifyright')
-				# when 'KeyL'
-				# 	event.preventDefault()
-				# 	exec('justifyleft')
-				# when 'KeyJ'
-				# 	event.preventDefault()
-				# 	exec('justifyFull')
 
 		# If tab is pressed prevent the event and insert a tab
 		if event.which == 9
@@ -97,6 +86,8 @@ export tag mark-down
 		<self @keydown=handlekeydown @input=compile innerHTML=inputStream @paste=handlepaste contentEditable="true">
 
 
-
 	css
 		ws:pre-wrap
+
+		*
+			transition-property: none

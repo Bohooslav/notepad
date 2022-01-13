@@ -101,7 +101,7 @@ global css
 		transition-timing-function: ease-in-out
 		transition-delay: 0
 		transition-duration: 500ms
-		transition-property: color, background, width, height, transform, opacity, max-height, max-width, top, left, bottom, right, visibility, fill, stroke, margin, padding, border
+		transition-property: background, width, height, transform, opacity, max-height, max-width, top, left, bottom, right, visibility, fill, stroke, margin, padding, border
 
 	*::selection
 		background-color: $acc-bgc
@@ -160,3 +160,8 @@ global css
 		text-align: left
 		min-width: 148px
 
+
+	.btn
+		bgc:$acc-bgc @hover:$acc-bgc-hover p:8px 12px c:$c font:inherit m:16px 0 rd:4px cursor:pointer
+
+		o@disabled:0.5

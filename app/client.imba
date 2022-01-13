@@ -25,7 +25,8 @@ if isMobile && isSmallScreen && document.cookie.indexOf( "mobileFullSiteClicked=
 let menu_left = -300
 let settings_menu_left = -300
 let show_accents = no
-let dial_window = ''
+let modal_window = ''
+let extab = yes
 
 let settings = {
 	theme: 'dark'
@@ -49,6 +50,8 @@ let store = {
 	show_themes: no
 	nav_search: ''
 	search_input: ''
+	merge_replace: 'false'
+	import_data:[]
 }
 
 const fonts = [
@@ -137,7 +140,7 @@ tag app
 	def clearSpace
 		menu_left = -300
 		settings_menu_left = -300
-		dial_window = ''
+		modal_window = ''
 		$main.firstChild.focus!
 		imba.commit!
 
@@ -329,9 +332,13 @@ tag app
 
 
 	def searchNotes
+		const query = store.search_input.trim!.toLowerCase!
+		unless query.length
+			search_results =  state.pages
+			return
+
 		search_results = []
 
-		const query = store.search_input.trim!.toLowerCase!
 
 		for page in state.pages # in aa given translations book
 			const score = scoreSearch(page.title, query)
@@ -345,8 +352,63 @@ tag app
 
 	def showMainSearch
 		clearSpace!
-		dial_window = 'search'
+		searchNotes!
+		modal_window = 'search'
 		setTimeout(&, 100) do $mainsearch.focus!
+
+	
+	def showImportExport
+		clearSpace!
+		modal_window = 'imexport'
+
+	def exportData
+		JSON.stringify(state.pages)
+
+	def downloadUrl
+		let myBlob = new Blob([exportData!], {type: "text/plain"})
+		return window.URL.createObjectURL(myBlob)
+
+	def readSingleFile e
+		let file = e.target.files[0]
+		if !file
+			return
+
+		let reader = new FileReader()
+		reader.onload = do(e)
+			let contents = e.target.result
+			try
+				let content = JSON.parse(contents)
+				if typeof content == 'object'
+					# Now check if the data is correct
+					for item in content
+						if !item.id || !item.title || !item.text
+							throw 'bad file'
+					log 'good', content
+					store.import_data = content
+
+			catch e
+				log e
+				window.alert('Bad file!')
+			# log contents
+		reader.readAsText(file)
+	
+	def importNotes
+		for item in store.import_data
+			let exist = state.pages.find(do(el) return el.id == item.id)
+			if exist
+				if store.merge_replace
+					let index = state.pages.indexOf(exist)
+					state.pages[index] = state.copyObj(item)
+					if state.current_page == index
+						let editor = document.getElementsByTagName('MARK-DOWN')[0]
+						editor.innerHTML = item.text
+			else
+				state.pages.push state.copyObj(item)
+
+		state.savePages!
+		clearSpace!
+		window.alert('Import was successfull!')
+
 
 	def render
 		<self @mousemove=mousemove>
@@ -367,7 +429,7 @@ tag app
 						<path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z">
 
 				<[ml:auto]>
-				if state.pages.length > 1
+				if state.pages.length
 					<menu-popup[pos:relative] bind=store.show_page_menu>
 						<button @click=(store.show_page_menu = !store.show_page_menu)>
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -397,8 +459,8 @@ tag app
 
 
 			# The heart of the app ;)
-			<main$main [w:100% pos:relative m:auto max-width:{settings.font.max-width}em min-height:calc(100vh - 128px) ff:{settings.font.family} fs:{settings.font.size}px lh:{settings.font.line-height}]>
-				<mark-down[min-height:calc(100vh - 128px)] key=state.page.id page=state.page>
+			<main$main [w:100% pos:relative m:auto min-height:calc(100vh - 128px) ff:{settings.font.family} fs:{settings.font.size}px lh:{settings.font.line-height}]>
+				<mark-down[min-height:calc(100vh - 128px) p:8px calc(50vw - 12px - {settings.font.max-width / 2}em)] key=state.page.id page=state.page>
 				if state.page.text == '' or state.page.text == '<br>'
 					<p[o:0.5 pos:absolute t:0 zi:-1]> 'Here begins your poetry 😉'
 
@@ -500,16 +562,23 @@ tag app
 							<.popup_menu [l:0 y@off:-32px o@off:0] ease>
 								for font in fonts
 									<button.butt[ff: {font.code}] .active_butt=font.name==settings.font.name @click=setFontFamily(font)> font.name
+				
+				<button.btnbox.cbtn.aside_button @click=showImportExport>
+					<svg[size:24px ml:4px mr:16px] xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px">
+						<title> 'Export / Import'
+						<path d="M0 0h24v24H0z" fill="none">
+						<path d="M9 3L5 6.99h3V14h2V6.99h3L9 3zm7 14.01V10h-2v7.01h-3L15 21l4-3.99h-3z">
+					'Export / Import'
 
 
 
-
-			if dial_window.length
+			if modal_window.length
 				<section [pos:fixed t:0 b:0 r:0 l:0 bgc:#000A h:100% d:flex jc:center p:14vh 0 @lt-sm:0 o@off:0 visibility@off:hidden zi:3] @click=clearSpace ease>
 
-					<div[pos:relative max-height:72vh @lt-sm:100vh max-width:64em @lt-sm:100% w:80% @lt-sm:100% bgc:$bgc bd:1px solid $acc-bgc-hover @lt-sm:none rd:16px @lt-sm:0 p:12px 24px @lt-sm:12px scale@off:0.75] .height_auto=(!search_results.length && dial_window=='search') @click.stop>
+					<div[pos:relative max-height:72vh @lt-sm:100vh max-width:64em @lt-sm:100% w:80% @lt-sm:100% bgc:$bgc bd:1px solid $acc-bgc-hover @lt-sm:none rd:16px @lt-sm:0 p:12px 24px @lt-sm:12px scale@off:0.75] @click.stop>
+						#  .height_auto=(!search_results.length && modal_window=='search')
 
-						if dial_window == 'search'
+						if modal_window == 'search'
 							<article.search_hat [pos:relative]>
 								<svg [fill@hover:firebrick] @click=clearSpace viewBox="0 0 20 20">
 									<title> 'Close'
@@ -521,18 +590,57 @@ tag app
 									<title> "Search"
 									<path d=svg_paths.search>
 
-							if search_results.length
-								<article[pb:32px]>
-									<p[ta:left p:8px 0 fs:16px c:$disabled]> "{search_results.length} results:"
+							# if search_results.length
+							<article[pb:32px]>
+								# <p[ta:	left p:8px 0 fs:16px c:$disabled]> "{search_results.length} results:"
 
-									<>
-										for result, key in search_results
-											<div.page_in_nav innerHTML=result.title @click=setPage(result.id)>
+								<>
+									for result, key in search_results
+										<div.page_in_nav innerHTML=result.title @click=setPage(result.id)>
 
-									unless search_results.length
-										<div[display:flex flex-direction:column height:100% justify-content:center align-items:center]>
-											<p> '(ಠ╭╮ಠ)  ¯\\_(ツ)_/¯  ノ( ゜-゜ノ)'
+								unless search_results.length
+									<div[display:flex flex-direction:column height:100% justify-content:center align-items:center]>
+										<p> '(ಠ╭╮ಠ)  ¯\\_(ツ)_/¯  ノ( ゜-゜ノ)'
 
+						elif modal_window == 'imexport'
+							<article.search_hat [pos:relative]>
+								<svg [fill@hover:firebrick pos:sticky zi:222] @click=clearSpace viewBox="0 0 20 20">
+									<title> 'Close'
+									<path[m:auto] d=svg_paths.close>
+
+								<div.imex_block>
+									<button.imex_block_btn .active_tab=extab @click=(extab = yes)> "Export"
+									<button.imex_block_btn .active_tab=!extab @click=(extab = no)> "Import"
+
+							<article#imex>
+								if extab
+									<h1> 'Export Notes'
+									<a download="notes.json" href=downloadUrl!> 'Download notes.json'
+									<p[my:16px]> 'or copy'
+									<textarea$exportta 
+										value=exportData!
+										readOnly=yes
+										@click=$exportta.select
+										[w:100% h:calc(100% - 210px) bgc:$bgc c:$c resize:vertical bd:none cursor:copy]>
+								else
+									<h1> 'Import Notes'
+									<input.file-input type='file' @change=readSingleFile> 'Open notes.json'
+									<p[m:24px 0 8px fw:600]>
+										"Merge strategy:"
+
+									<label>
+										<input type="radio" value="false" bind=store.merge_replace>
+										"Skip conflicting pages"
+									<label>
+										<input type="radio" value="true" bind=store.merge_replace>
+										"Replace existing"
+
+									<button.btn disabled=!store.import_data.length @click=importNotes> "Import"
+
+									<textarea
+										value=JSON.stringify(store.import_data)
+										readOnly=yes
+										[w:100% h:calc(100% - 356px) bgc:$bgc c:$c resize:vertical bd:none]>
 
 			<global
 				@hotkey("mod+s").force.prevent.stop
@@ -697,14 +805,73 @@ tag app
 			fill: $c
 			cursor: pointer
 
-		# .search_hat h1
-		# 	text-align: center
-		# 	margin: auto
-		# 	-webkit-line-clamp: 2
-		# 	overflow: hidden
-		# 	display: -webkit-box
-		# 	-webkit-box-orient: vertical
-		# 	font-size: 1em
+		.imex_block
+			pos:absolute w:100% h:100% d:flex jc:center g:8px p:4px
+
+		.imex_block_btn
+			font:inherit
+			c:inherit
+			bgc:$acc-bgc @hover:$acc-bgc-hover
+			p:0 12px
+			rd:4px
+			cursor:pointer
+			fw:bold
+		
+		.active_tab
+			bgc:$acc-color
+		
+		#imex
+			h1
+				my:16px
+
+			a
+				c:$c fw:bolder
+				d:inline-block
+				td:none
+				p:12px
+				bgc:$acc-bgc
+				rd:4px
+
+		.file-input
+			font:inherit
+			w:100% h:46px
+			cursor: pointer
+
+		.file-input::-webkit-file-upload-button
+			visibility:hidden
+
+		.file-input::before
+			content: 'Open notes.json'
+			display: inline-block
+			background:$acc-bgc
+			w:auto ta:center
+			border-radius: 8px
+			padding: 12px 16px
+			outline: none
+			white-space: nowrap
+			-webkit-user-select: none
+
+		.file-input@hover::before
+			bgc:$acc-bgc-hover
+
+		.file-input@active::before
+			bgc:$acc-bgc-hover
+
+		#imex
+			label
+				d:flex ai:center
+				cursor:pointer
+			
+			input[type="radio"]::before
+				d:inline-block
+				p:0 8px
+				c:$c
+				fs:32px
+				content:'○'
+
+
+			input[type="radio"]@checked::before
+				content: '●'
 
 
 imba.mount <app>
