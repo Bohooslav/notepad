@@ -459,8 +459,8 @@ tag app
 
 
 			# The heart of the app ;)
-			<main$main [w:100% pos:relative m:auto min-height:calc(100vh - 128px) ff:{settings.font.family} fs:{settings.font.size}px lh:{settings.font.line-height}]>
-				<mark-down[min-height:calc(100vh - 128px) p:8px calc(50vw - 12px - {settings.font.max-width / 2}em)] key=state.page.id page=state.page>
+			<main$main [w:100% pos:relative m:auto min-height:calc(100vh - 128px) ff:{settings.font.family} fs:{settings.font.size}px lh:{settings.font.line-height} $homx:{settings.font.max-width / 2}em]>
+				<mark-down[min-height:calc(100vh - 128px) p:8px calc(50vw - 12px - $homx)] key=state.page.id page=state.page>
 				if state.page.text == '' or state.page.text == '<br>'
 					<p[o:0.5 pos:absolute t:0 zi:-1]> 'Here begins your poetry 😉'
 
@@ -476,14 +476,8 @@ tag app
 				for page, i in state.pages when store.nav_search.toLowerCase! in page.title.toLowerCase!
 					nothing_found = no
 					<div.page_in_nav .active_butt=(i==state.current_page) @click=goToPage(i)>
-						<div.page_preview>
-							if page.title
-								let lines = page.title.split('\n')
-								<b> lines.shift!
-								if lines.length > 1
-									<p[fs:0.9em]> lines.join('\n')
-							else
-								<b> "Empty page 🤷🏻‍♂️"
+						<page-preview title=page.title>
+
 				if nothing_found
 					<p[ws:pre fs:14px ta:center pt:16px]> '(ಠ╭╮ಠ)  ¯\\_(ツ)_/¯  ノ( ゜-゜ノ)'
 
@@ -596,7 +590,8 @@ tag app
 
 								<>
 									for result, key in search_results
-										<div.page_in_nav innerHTML=result.title @click=setPage(result.id)>
+										<div.page_in_nav @click=setPage(result.id)>
+											<page-preview title=result.title>
 
 								unless search_results.length
 									<div[display:flex flex-direction:column height:100% justify-content:center align-items:center]>
@@ -711,13 +706,6 @@ tag app
 			rd:8px
 			bgc@hover:$acc-bgc-hover
 			cursor:pointer
-
-		.page_preview
-			-webkit-line-clamp:3
-			overflow: hidden
-			display: -webkit-box
-			-webkit-box-orient: vertical
-			ws:pre-wrap
 
 		.btnbox
 			cursor: pointer
@@ -858,6 +846,9 @@ tag app
 			bgc:$acc-bgc-hover
 
 		#imex
+			h:100%
+		
+		#imex
 			label
 				d:flex ai:center
 				cursor:pointer
@@ -873,5 +864,25 @@ tag app
 			input[type="radio"]@checked::before
 				content: '●'
 
+
+tag page-preview
+	prop title\object
+
+	css
+		-webkit-line-clamp:3
+		overflow: hidden
+		display: -webkit-box
+		-webkit-box-orient: vertical
+		ws:pre-wrap
+
+	def render
+		<self>
+			if title
+				let lines = title.split('\n')
+				<b> lines.shift!
+				if lines.length > 1
+					<p[fs:0.9em]> lines.join('\n')
+			else
+				<b> "Empty page 🤷🏻‍♂️"
 
 imba.mount <app>

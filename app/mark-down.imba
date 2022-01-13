@@ -8,7 +8,6 @@ tag mark-down
 	outputStream = "<p>Hey there<p>"
 	
 	def mount
-		log 'HEREEE', self.nodeName
 		inputStream = page.text
 		outputStream = page.text
 		imba.commit!
