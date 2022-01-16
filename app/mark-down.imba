@@ -1,21 +1,84 @@
-const formatBlock = 'formatBlock'
-const defaultParagraphSeparator = 'defaultParagraphSeparator' || 'div'
+import { EditorState } from '@codemirror/state'
+import { EditorView, keymap } from '@codemirror/view'
+import { defaultKeymap } from '@codemirror/commands'
+import { history, historyKeymap } from '@codemirror/history'
+import { indentOnInput } from '@codemirror/language'
+import { bracketMatching } from '@codemirror/matchbrackets'
+import { defaultHighlightStyle } from '@codemirror/highlight'
+import { markdown, markdownLanguage } from '@codemirror/lang-markdown'
+import { languages } from '@codemirror/language-data'
+import { oneDark } from '@codemirror/theme-one-dark'
+
+
+import { syntaxHighlighting } from './highlighting'
+
 
 
 tag mark-down
-	page = {}
-	inputStream = "Hey there"
-	outputStream = "<p>Hey there<p>"
-	
-	def mount
-		inputStream = page.text
-		outputStream = page.text
+	ff\string
+	page\object
+	editorView\EditorView
+
+	def setup
+		useCodeMirror!
+		log editorView
 		imba.commit!
+
+	def useCodeMirror
+		const bollsPadTheme = EditorView.theme({
+			'&': {
+				backgroundColor: 'transparent !important',
+				fontFamily:ff,
+				font:ff,
+				height: 'auto',
+				# color:'var(--c)'
+			},
+			".cm-content": {
+				caretColor: 'var(--c)',
+				minHeight: "100%"
+				height:'auto'
+			},
+			".cm-scroller": {
+				fontFamily:ff,
+				height:'auto'
+				# overflow:'auto'
+			}
+		}, {dark:true})
+
+		const startState = EditorState.create({
+			doc: page.text,
+			extensions: [
+				keymap.of([...defaultKeymap, ...historyKeymap]),
+				history(),
+				indentOnInput(),
+				bracketMatching(),
+				defaultHighlightStyle.fallback,
+				markdown({
+					base: markdownLanguage,
+					codeLanguages: languages,
+					addKeymap: true
+				}),
+				syntaxHighlighting,
+				bollsPadTheme,
+				oneDark,
+				EditorView.lineWrapping,
+				EditorView.updateListener.of(do(update)
+					if update.changes
+						handleChange && handleChange(update.state)
+				)
+			]
+		})
+
+		editorView = new EditorView({
+			state: startState,
+			parent: self,
+		})
+
 
 	def parsePageTitle
 		page.title = ''
 		let lines_count = 0
-		for line in innerText.split('\n')
+		for line in page.text.split('\n')
 			line = line.trim()
 			if line == ''
 				continue
@@ -25,68 +88,25 @@ tag mark-down
 			if lines_count > 2
 				break
 
-	def exec command, value = null
-		document.execCommand(command, no, value)
-		focus()
 
-	def handlekeydown event
-		# This enables major keybidings
-		if event.ctrlKey == yes
-			switch event.code
-				when 'KeyI'
-					event.preventDefault()
-					exec('italic')
-				when 'KeyB'
-					event.preventDefault()
-					exec('bold')
-				when 'KeyU'
-					event.preventDefault()
-					exec('underline')
+	def handleChange e
+		# console.log e
+		page.text = e.doc.toString!
 
-		# If tab is pressed prevent the event and insert a tab
-		if event.which == 9
-			event.preventDefault()
-
-			let sel = document.getSelection()
-			let range = sel.getRangeAt(0)
-
-			let tabNode = document.createTextNode("\u0009")
-			range.insertNode(tabNode)
-
-			range.setStartAfter(tabNode)
-			range.setEndAfter(tabNode)
-			sel.removeAllRanges()
-			sel.addRange(range)
-
-		if event.key === 'Enter' && document.queryCommandValue(formatBlock) === 'blockquote'
-			setTimeout(&, 0) do exec(formatBlock, "<{defaultParagraphSeparator}>")
-
-
-	def handlepaste event
-		event.preventDefault()
-		let plainText = event.clipboardData.getData('text/plain')
-		document.execCommand('inserttext', no, plainText)
-
-		# Backup to the event.preventDefault()
-		return no
-
-	def compile e
-		# Do here markdown parsing
-		# TODO instead of innerHTML use output of the compiler
-		outputStream = innerHTML
-
-		# Save it to localStorage
-		page.text = outputStream
+		# # Save it to localStorage
 		parsePageTitle!
 		state.savePages!
 
 
-	def render
-		<self @keydown=handlekeydown @input=compile innerHTML=inputStream @paste=handlepaste contentEditable="true">
 
+	def render
+		<self>
 
 	css
+		d:inline-block
 		ws:pre-wrap
+		height:calc(100vh - 128px) w:100% p:8px calc(50vw - 12px - $homx)
 
+	css
 		*
-			transition-property: none
+			transition-property@important: none

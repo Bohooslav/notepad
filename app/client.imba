@@ -141,7 +141,7 @@ tag app
 		menu_left = -300
 		settings_menu_left = -300
 		modal_window = ''
-		$main.firstChild.focus!
+		# $main.firstChild.focus!
 		imba.commit!
 
 	def toggleMenu
@@ -409,7 +409,6 @@ tag app
 		clearSpace!
 		window.alert('Import was successfull!')
 
-
 	def render
 		<self @mousemove=mousemove>
 
@@ -458,14 +457,20 @@ tag app
 						<path d="M7.502 1.019a.996.996 0 0 0-.998.998v.451a5.734 5.734 0 0 0-1.356.566l-.322-.322a.995.995 0 0 0-1.41 0l-.705.705a.995.995 0 0 0 0 1.41l.32.32a5.734 5.734 0 0 0-.56 1.358h-.454a.995.995 0 0 0-.998.996V8.5c0 .553.446.996.998.996h.45a5.734 5.734 0 0 0 .566 1.356l-.322.322a.995.995 0 0 0 0 1.41l.705.705c.39.391 1.02.391 1.41 0l.32-.32a5.734 5.734 0 0 0 1.358.56v.456c0 .552.445.996.998.996h.996a.995.995 0 0 0 .998-.996v-.451a5.734 5.734 0 0 0 1.355-.567l.323.322c.39.391 1.02.391 1.41 0l.705-.705a.995.995 0 0 0 0-1.41l-.32-.32a5.734 5.734 0 0 0 .56-1.358h.453a.995.995 0 0 0 .998-.996v-.998a.995.995 0 0 0-.998-.996h-.449a5.734 5.734 0 0 0-.566-1.355l.322-.323a.995.995 0 0 0 0-1.41l-.705-.705a.995.995 0 0 0-1.41 0l-.32.32a5.734 5.734 0 0 0-1.358-.56v-.455a.996.996 0 0 0-.998-.998zm.515 3.976a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3z" style="marker:none">
 
 
-			# The heart of the app ;)
-			<main$main [w:100% pos:relative m:auto min-height:calc(100vh - 128px) ff:{settings.font.family} fs:{settings.font.size}px lh:{settings.font.line-height} $homx:{settings.font.max-width / 2}em]>
-				<mark-down[min-height:calc(100vh - 128px) p:8px calc(50vw - 12px - $homx)] key=state.page.id page=state.page>
+			<mark-down
+				ff=settings.font.family
+				[fs:{settings.font.size}px lh:{settings.font.line-height} $homx:{settings.font.max-width / 2}em]
+				key=state.page.id page=state.page
+				>
+
+				# Use https://codemirror.net/doc/manual.html#addon_placeholder as a placeholder
 				if state.page.text == '' or state.page.text == '<br>'
 					<p[o:0.5 pos:absolute t:0 zi:-1]> 'Here begins your poetry 😉'
 
 
-			<nav.drawer @touchstart=slidestart @touchend=closedrawersend @touchcancel=closedrawersend @touchmove=closingdrawer style="left: {menu_left}px; {boxShadow(menu_left)}{(onzone || inzone) ? 'transition:none;' : ''}">
+
+			<nav.drawer @touchstart=slidestart @touchend=closedrawersend @touchcancel=closedrawersend @touchmove=closingdrawer
+				style="left: {menu_left}px; {boxShadow(menu_left)}{(onzone || inzone) ? 'transition:none;' : ''}">
 				<h1[p:8px d:flex ai:center pr:0]>
 					"Pages"
 					<button[ml:auto] @click=(state.addNewPage!, clearSpace!)>
@@ -489,7 +494,8 @@ tag app
 					
 
 
-			<aside @touchstart=slidestart @touchend=closedrawersend @touchcancel=closedrawersend @touchmove=closingdrawer style="right:{MOBILE_PLATFORM ? settings_menu_left : settings_menu_left ? settings_menu_left : settings_menu_left + 12}px;{boxShadow(settings_menu_left)}{(onzone || inzone) ? 'transition:none;' : ''}">
+			<aside @touchstart=slidestart @touchend=closedrawersend @touchcancel=closedrawersend @touchmove=closingdrawer
+				style="right:{MOBILE_PLATFORM ? settings_menu_left : settings_menu_left ? settings_menu_left : settings_menu_left + 12}px;{boxShadow(settings_menu_left)}{(onzone || inzone) ? 'transition:none;' : ''}">
 				<h1[fs:24px h:32px d:flex jc:space-between ai:center]>
 					"Settings"
 
@@ -653,9 +659,9 @@ tag app
 
 
 	css
-		d:flex
-		fld:column
-		jc:center
+		# d:flex
+		# fld:column
+		# jc:center
 		p:64px 12px
 		min-height:100%
 

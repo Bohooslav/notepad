@@ -10,6 +10,25 @@ class State
 		unless pages.length
 			addNewPage!
 		current_page = parseInt(getCookie('current_page')) || 0
+		# migrateToMarkdown!
+
+
+	def migrateToMarkdown
+		for page in pages
+			console.log page.text
+			# page.text = page.text.replace('<br>', '\n')
+			page.text = page.text.replaceAll('</div><div>', '</div>\n<div>')
+			
+
+			let div = <div>
+			div.style.whiteSpace = 'pre'
+			div.innerHTML = page.text
+			page.text = div.innerText
+			# page.text = page.text.replace('\n', '\n\n')
+
+			console.log page.text
+		
+		savePages!
 
 	def savePages
 		setCookie('pages', JSON.stringify(pages))

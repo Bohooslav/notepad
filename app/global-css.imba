@@ -13,6 +13,14 @@ global css
 		$acc-bgc-hover: #383a6d
 		$disabled: rgb(168, 162, 159)
 
+		$header:#82B1FF
+		$strong:#FFCB6B
+		$italic:#C792EA
+		$quote:#B48EAD
+		$instruction:#273553
+		$link:#FF869A
+		content:#BFC7D5
+
 	html[data-theme="sepia"]
 		$bgc: rgb(235, 219, 183)
 		$c: rgb(46, 39, 36)
@@ -101,7 +109,7 @@ global css
 		transition-timing-function: ease-in-out
 		transition-delay: 0
 		transition-duration: 500ms
-		transition-property: background, width, height, transform, opacity, max-height, max-width, top, left, bottom, right, visibility, fill, stroke, margin, padding, border
+		transition-property: color, background, width, height, transform, opacity, max-height, max-width, top, left, bottom, right, visibility, fill, stroke, margin, padding, border
 
 	*::selection
 		background-color: $acc-bgc
