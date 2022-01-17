@@ -410,7 +410,7 @@ tag app
 		window.alert('Import was successfull!')
 
 	def render
-		<self @mousemove=mousemove>
+		<self @mousemove=mousemove [$homx:{settings.font.max-width / 2}em]>
 
 			<nav[pos:fixed t:0 l:0 r:0 zi:1 h:48px d:flex ai:center px:12px g:4px bgc:$bgc]>
 				<button @click=goToPage(state.current_page - 1) .disabled=(state.current_page < 1)>
@@ -459,7 +459,7 @@ tag app
 
 			<mark-down
 				ff=settings.font.family
-				[fs:{settings.font.size}px lh:{settings.font.line-height} $homx:{settings.font.max-width / 2}em]
+				[fs:{settings.font.size}px lh:{settings.font.line-height}]
 				key=state.page.id page=state.page
 				>
 

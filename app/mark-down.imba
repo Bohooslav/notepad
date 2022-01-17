@@ -7,7 +7,7 @@ import { bracketMatching } from '@codemirror/matchbrackets'
 import { defaultHighlightStyle } from '@codemirror/highlight'
 import { markdown, markdownLanguage } from '@codemirror/lang-markdown'
 import { languages } from '@codemirror/language-data'
-import { oneDark } from '@codemirror/theme-one-dark'
+# import { oneDark } from '@codemirror/theme-one-dark'
 
 
 import { syntaxHighlighting } from './highlighting'
@@ -27,21 +27,21 @@ tag mark-down
 	def useCodeMirror
 		const bollsPadTheme = EditorView.theme({
 			'&': {
-				backgroundColor: 'transparent !important',
-				fontFamily:ff,
-				font:ff,
-				height: 'auto',
-				# color:'var(--c)'
-			},
+				backgroundColor: 'transparent !important'
+				fontFamily:ff
+				font:ff
+				height: 'auto'
+				color:'var(--c)'
+			}
 			".cm-content": {
-				caretColor: 'var(--c)',
+				caretColor: 'var(--c)'
 				minHeight: "100%"
 				height:'auto'
-			},
+			}
 			".cm-scroller": {
-				fontFamily:ff,
+				fontFamily:ff
 				height:'auto'
-				# overflow:'auto'
+				paddingBottom:'25vh'
 			}
 		}, {dark:true})
 
@@ -58,9 +58,9 @@ tag mark-down
 					codeLanguages: languages,
 					addKeymap: true
 				}),
-				syntaxHighlighting,
 				bollsPadTheme,
-				oneDark,
+				syntaxHighlighting,
+				# oneDark,
 				EditorView.lineWrapping,
 				EditorView.updateListener.of(do(update)
 					if update.changes
@@ -71,7 +71,7 @@ tag mark-down
 
 		editorView = new EditorView({
 			state: startState,
-			parent: self,
+			parent: self
 		})
 
 
@@ -106,7 +106,3 @@ tag mark-down
 		d:inline-block
 		ws:pre-wrap
 		height:calc(100vh - 128px) w:100% p:8px calc(50vw - 12px - $homx)
-
-	css
-		*
-			transition-property@important: none

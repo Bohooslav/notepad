@@ -17,9 +17,8 @@ global css
 		$strong:#FFCB6B
 		$italic:#C792EA
 		$quote:#B48EAD
-		$instruction:#273553
-		$link:#FF869A
-		content:#BFC7D5
+		$url:#8ABEB7
+		$string:#C3E88D
 
 	html[data-theme="sepia"]
 		$bgc: rgb(235, 219, 183)
@@ -173,3 +172,8 @@ global css
 		bgc:$acc-bgc @hover:$acc-bgc-hover p:8px 12px c:$c font:inherit m:16px 0 rd:4px cursor:pointer
 
 		o@disabled:0.5
+
+	
+	mark-down
+		*
+			transition@important: none

@@ -1,3 +1,5 @@
+import default_pages from './default_pages'
+
 class State
 	pages = []
 	current_page = 0
@@ -8,9 +10,11 @@ class State
 	def constructor
 		pages = JSON.parse(getCookie('pages')) || []
 		unless pages.length
-			addNewPage!
+			pages = default_pages
 		current_page = parseInt(getCookie('current_page')) || 0
-		# migrateToMarkdown!
+		unless getCookie('migrated')
+			migrateToMarkdown!
+			setCookie('migrated', 'true')
 
 
 	def migrateToMarkdown
@@ -18,7 +22,7 @@ class State
 			console.log page.text
 			# page.text = page.text.replace('<br>', '\n')
 			page.text = page.text.replaceAll('</div><div>', '</div>\n<div>')
-			
+
 
 			let div = <div>
 			div.style.whiteSpace = 'pre'

@@ -378,7 +378,7 @@
   "public": true,
   "path": "public/__assets__/all.css",
   "asset": "$$42$$",
-  "hash": "5ZVKZ6X5",
+  "hash": "WUHXEOD8",
   "originalPath": "all.__dist__.css",
   "url": "/__assets__/all.css"
 },
@@ -449,10 +449,10 @@
     ],
     [
       "$$50$$",
-      684
+      679
     ]
   ],
-  "bytes": 893,
+  "bytes": 888,
   "source": "$$50$$",
   "_": "output",
   "path": "public/index.html",
@@ -462,7 +462,7 @@
     "$$48$$",
     "$$49$$"
   ],
-  "hash": "VXQZ85TA",
+  "hash": "1EBIUCEX",
   "originalPath": "app/index.__dist__.html",
   "url": "/app/index.html"
 },
@@ -470,7 +470,7 @@
   "imports": [],
   "exports": [],
   "inputs": [],
-  "bytes": 232897,
+  "bytes": 3395528,
   "source": "$$51$$",
   "_": "output",
   "path": "public/__assets__/app/client.js.map",
@@ -478,7 +478,7 @@
   "url": "/__assets__/app/client.js.map",
   "type": "map",
   "dependencies": [],
-  "hash": "P1CZWJGI"
+  "hash": "O40PGNR3"
 },
 "$$46$$":{
   "imports": [],
@@ -487,126 +487,686 @@
   "inputs": [
     [
       "$$52$$",
-      1131
+      9992
     ],
     [
       "$$53$$",
-      3480
+      4976
     ],
     [
       "$$54$$",
-      1242
+      12901
     ],
     [
       "$$55$$",
-      937
+      6179
     ],
     [
       "$$56$$",
-      8081
+      7773
     ],
     [
       "$$57$$",
-      3826
+      22900
     ],
     [
       "$$58$$",
-      1341
+      2207
     ],
     [
       "$$59$$",
-      2151
+      1849
     ],
     [
       "$$60$$",
-      4295
+      883
     ],
     [
       "$$61$$",
-      4831
+      2781
     ],
     [
       "$$62$$",
-      440
+      2419
     ],
     [
       "$$63$$",
-      4249
+      1777
     ],
     [
       "$$64$$",
-      2583
+      2343
     ],
     [
       "$$65$$",
-      5816
+      5364
     ],
     [
       "$$66$$",
-      632
+      2452
     ],
     [
       "$$67$$",
-      552
+      794
     ],
     [
       "$$68$$",
-      5797
+      4019
     ],
     [
       "$$69$$",
-      1321
+      4508
     ],
     [
       "$$70$$",
-      5135
+      609
     ],
     [
       "$$71$$",
-      3704
+      6266
     ],
     [
       "$$72$$",
-      0
+      22105
     ],
     [
       "$$73$$",
-      1531
+      10868
     ],
     [
       "$$74$$",
-      0
+      27077
     ],
     [
       "$$75$$",
-      0
+      799
     ],
     [
       "$$76$$",
-      2227
+      3929
     ],
     [
       "$$77$$",
-      0
+      2370
     ],
     [
       "$$78$$",
-      1113
+      3593
     ],
     [
       "$$79$$",
-      740
+      6459
     ],
     [
       "$$80$$",
+      5242
+    ],
+    [
+      "$$81$$",
+      3797
+    ],
+    [
+      "$$82$$",
+      318
+    ],
+    [
+      "$$83$$",
+      1948
+    ],
+    [
+      "$$84$$",
+      2111
+    ],
+    [
+      "$$85$$",
+      4133
+    ],
+    [
+      "$$86$$",
+      2010
+    ],
+    [
+      "$$87$$",
+      5216
+    ],
+    [
+      "$$88$$",
+      1833
+    ],
+    [
+      "$$89$$",
+      1907
+    ],
+    [
+      "$$90$$",
+      8265
+    ],
+    [
+      "$$91$$",
+      37241
+    ],
+    [
+      "$$92$$",
+      1635
+    ],
+    [
+      "$$93$$",
+      2116
+    ],
+    [
+      "$$94$$",
+      2564
+    ],
+    [
+      "$$95$$",
+      4710
+    ],
+    [
+      "$$96$$",
+      4810
+    ],
+    [
+      "$$97$$",
+      4456
+    ],
+    [
+      "$$98$$",
+      10166
+    ],
+    [
+      "$$99$$",
+      2840
+    ],
+    [
+      "$$100$$",
+      3971
+    ],
+    [
+      "$$101$$",
+      4213
+    ],
+    [
+      "$$102$$",
+      8271
+    ],
+    [
+      "$$103$$",
+      880
+    ],
+    [
+      "$$104$$",
+      11676
+    ],
+    [
+      "$$105$$",
+      17541
+    ],
+    [
+      "$$106$$",
+      1971
+    ],
+    [
+      "$$107$$",
+      5300
+    ],
+    [
+      "$$108$$",
+      4144
+    ],
+    [
+      "$$109$$",
+      3439
+    ],
+    [
+      "$$110$$",
+      5957
+    ],
+    [
+      "$$111$$",
+      1946
+    ],
+    [
+      "$$112$$",
+      2835
+    ],
+    [
+      "$$113$$",
+      2101
+    ],
+    [
+      "$$114$$",
+      1435
+    ],
+    [
+      "$$115$$",
+      7395
+    ],
+    [
+      "$$116$$",
+      6667
+    ],
+    [
+      "$$117$$",
+      2158
+    ],
+    [
+      "$$118$$",
+      2358
+    ],
+    [
+      "$$119$$",
+      2959
+    ],
+    [
+      "$$120$$",
+      2314
+    ],
+    [
+      "$$121$$",
+      9957
+    ],
+    [
+      "$$122$$",
+      2583
+    ],
+    [
+      "$$123$$",
+      7851
+    ],
+    [
+      "$$124$$",
+      671
+    ],
+    [
+      "$$125$$",
+      891
+    ],
+    [
+      "$$126$$",
+      2567
+    ],
+    [
+      "$$127$$",
+      4042
+    ],
+    [
+      "$$128$$",
+      3023
+    ],
+    [
+      "$$129$$",
+      1618
+    ],
+    [
+      "$$130$$",
+      5251
+    ],
+    [
+      "$$131$$",
+      9404
+    ],
+    [
+      "$$132$$",
+      6324
+    ],
+    [
+      "$$133$$",
+      2610
+    ],
+    [
+      "$$134$$",
+      1660
+    ],
+    [
+      "$$135$$",
+      2051
+    ],
+    [
+      "$$136$$",
+      915
+    ],
+    [
+      "$$137$$",
+      3588
+    ],
+    [
+      "$$138$$",
+      1148
+    ],
+    [
+      "$$139$$",
+      26406
+    ],
+    [
+      "$$140$$",
+      4002
+    ],
+    [
+      "$$141$$",
+      3123
+    ],
+    [
+      "$$142$$",
+      8652
+    ],
+    [
+      "$$143$$",
+      2405
+    ],
+    [
+      "$$144$$",
+      6964
+    ],
+    [
+      "$$145$$",
+      2892
+    ],
+    [
+      "$$146$$",
+      3385
+    ],
+    [
+      "$$147$$",
+      1100
+    ],
+    [
+      "$$148$$",
+      985
+    ],
+    [
+      "$$149$$",
+      5021
+    ],
+    [
+      "$$150$$",
+      4194
+    ],
+    [
+      "$$151$$",
+      2080
+    ],
+    [
+      "$$152$$",
+      2620
+    ],
+    [
+      "$$153$$",
+      4066
+    ],
+    [
+      "$$154$$",
+      5997
+    ],
+    [
+      "$$155$$",
+      2721
+    ],
+    [
+      "$$156$$",
+      3430
+    ],
+    [
+      "$$157$$",
+      6833
+    ],
+    [
+      "$$158$$",
+      2218
+    ],
+    [
+      "$$159$$",
+      1541
+    ],
+    [
+      "$$160$$",
+      1775
+    ],
+    [
+      "$$161$$",
+      3569
+    ],
+    [
+      "$$162$$",
+      2124
+    ],
+    [
+      "$$163$$",
+      1134
+    ],
+    [
+      "$$164$$",
+      3483
+    ],
+    [
+      "$$165$$",
+      1244
+    ],
+    [
+      "$$166$$",
+      946
+    ],
+    [
+      "$$167$$",
+      8103
+    ],
+    [
+      "$$168$$",
+      3826
+    ],
+    [
+      "$$169$$",
+      1341
+    ],
+    [
+      "$$170$$",
+      2151
+    ],
+    [
+      "$$171$$",
+      4295
+    ],
+    [
+      "$$172$$",
+      4835
+    ],
+    [
+      "$$173$$",
+      444
+    ],
+    [
+      "$$174$$",
+      4251
+    ],
+    [
+      "$$175$$",
+      2584
+    ],
+    [
+      "$$176$$",
+      5819
+    ],
+    [
+      "$$177$$",
+      632
+    ],
+    [
+      "$$178$$",
+      552
+    ],
+    [
+      "$$179$$",
+      5785
+    ],
+    [
+      "$$180$$",
+      1321
+    ],
+    [
+      "$$181$$",
+      5131
+    ],
+    [
+      "$$182$$",
+      3708
+    ],
+    [
+      "$$183$$",
+      0
+    ],
+    [
+      "$$184$$",
+      3659
+    ],
+    [
+      "$$185$$",
+      2018
+    ],
+    [
+      "$$186$$",
+      0
+    ],
+    [
+      "$$187$$",
+      9978
+    ],
+    [
+      "$$188$$",
+      23859
+    ],
+    [
+      "$$189$$",
+      1998
+    ],
+    [
+      "$$190$$",
+      12396
+    ],
+    [
+      "$$191$$",
+      1763
+    ],
+    [
+      "$$192$$",
+      108379
+    ],
+    [
+      "$$193$$",
+      23973
+    ],
+    [
+      "$$194$$",
+      12682
+    ],
+    [
+      "$$195$$",
+      2315
+    ],
+    [
+      "$$196$$",
+      12289
+    ],
+    [
+      "$$197$$",
+      5592
+    ],
+    [
+      "$$198$$",
+      8940
+    ],
+    [
+      "$$199$$",
+      31571
+    ],
+    [
+      "$$200$$",
+      23973
+    ],
+    [
+      "$$201$$",
+      10261
+    ],
+    [
+      "$$202$$",
+      8905
+    ],
+    [
+      "$$203$$",
+      53459
+    ],
+    [
+      "$$204$$",
+      6260
+    ],
+    [
+      "$$205$$",
+      1459
+    ],
+    [
+      "$$206$$",
+      16203
+    ],
+    [
+      "$$207$$",
+      90114
+    ],
+    [
+      "$$208$$",
+      31407
+    ],
+    [
+      "$$209$$",
+      1372
+    ],
+    [
+      "$$210$$",
+      89715
+    ],
+    [
+      "$$211$$",
+      47328
+    ],
+    [
+      "$$212$$",
+      66917
+    ],
+    [
+      "$$213$$",
+      6314
+    ],
+    [
+      "$$214$$",
+      2231
+    ],
+    [
+      "$$215$$",
+      1417
+    ],
+    [
+      "$$216$$",
+      0
+    ],
+    [
+      "$$217$$",
+      0
+    ],
+    [
+      "$$218$$",
+      1121
+    ],
+    [
+      "$$219$$",
+      740
+    ],
+    [
+      "$$220$$",
       0
     ],
     [
       "$$51$$",
-      39811
+      40221
     ]
   ],
-  "bytes": 107060,
+  "bytes": 1384322,
   "map": "$$45$$",
   "source": "$$51$$",
   "css": "$$47$$",
@@ -616,30 +1176,30 @@
   "url": "/__assets__/app/client.js",
   "type": "js",
   "dependencies": [],
-  "hash": "P1CZWJGI",
+  "hash": "O40PGNR3",
   "originalPath": "app/client.__dist__.js"
 },
 "$$47$$":{
   "imports": [],
   "inputs": [
     [
-      "$$80$$",
-      12179
+      "$$220$$",
+      11934
     ],
     [
-      "$$74$$",
-      3824
+      "$$186$$",
+      3994
     ],
     [
-      "$$75$$",
-      93
+      "$$216$$",
+      155
     ],
     [
-      "$$77$$",
+      "$$217$$",
       25
     ]
   ],
-  "bytes": 16122,
+  "bytes": 16109,
   "source": "$$51$$",
   "_": "output",
   "path": "public/__assets__/app/client.css",
@@ -647,7 +1207,7 @@
   "url": "/__assets__/app/client.css",
   "type": "css",
   "dependencies": [],
-  "hash": "YQNR6CHT",
+  "hash": "HWAQDMK3",
   "originalPath": "app/client.__dist__.css"
 },
 "$$48$$":{
@@ -664,7 +1224,7 @@
   "asset": "$$46$$"
 },
 "$$50$$":{
-  "bytes": 781,
+  "bytes": 776,
   "imports": [
     "$$48$$",
     "$$49$$"
@@ -674,15 +1234,15 @@
   "js": "$$44$$"
 },
 "$$51$$":{
-  "bytes": 144702,
+  "bytes": 144328,
   "imports": [
-    "$$72$$",
-    "$$73$$",
-    "$$81$$",
-    "$$76$$",
-    "$$78$$",
-    "$$79$$",
-    "$$80$$"
+    "$$183$$",
+    "$$185$$",
+    "$$221$$",
+    "$$205$$",
+    "$$218$$",
+    "$$219$$",
+    "$$220$$"
   ],
   "_": "input",
   "path": "app/client.imba",
@@ -691,402 +1251,1553 @@
   "map": "$$45$$"
 },
 "$$52$$":{
+  "bytes": 13686,
+  "imports": [
+    "$$202$$",
+    "$$194$$",
+    "$$198$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@codemirror/lang-css/dist/index.js"
+},
+"$$53$$":{
+  "bytes": 10657,
+  "imports": [
+    "$$203$$",
+    "$$194$$",
+    "$$198$$",
+    "$$204$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@codemirror/lang-javascript/dist/index.js"
+},
+"$$54$$":{
+  "bytes": 23217,
+  "imports": [
+    "$$201$$",
+    "$$52$$",
+    "$$53$$",
+    "$$192$$",
+    "$$188$$",
+    "$$194$$",
+    "$$198$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@codemirror/lang-html/dist/index.js"
+},
+"$$55$$":{
+  "bytes": 15151,
+  "imports": [
+    "$$188$$",
+    "$$192$$",
+    "$$194$$",
+    "$$199$$",
+    "$$54$$",
+    "$$198$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@codemirror/lang-markdown/dist/index.js"
+},
+"$$56$$":{
+  "bytes": 17827,
+  "imports": [
+    "$$193$$",
+    "$$198$$",
+    "$$194$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@codemirror/stream-parser/dist/index.js"
+},
+"$$57$$":{
+  "bytes": 34196,
+  "imports": [
+    "$$194$$",
+    "$$198$$",
+    "$$200$$",
+    "$$204$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@codemirror/lang-sql/dist/index.js"
+},
+"$$58$$":{
+  "bytes": 4127,
+  "imports": [
+    "$$207$$",
+    "$$194$$",
+    "$$198$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@codemirror/lang-cpp/dist/index.js"
+},
+"$$59$$":{
+  "bytes": 3722,
+  "imports": [
+    "$$208$$",
+    "$$194$$",
+    "$$198$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@codemirror/lang-java/dist/index.js"
+},
+"$$60$$":{
+  "bytes": 2279,
+  "imports": [
+    "$$209$$",
+    "$$194$$",
+    "$$198$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@codemirror/lang-json/dist/index.js"
+},
+"$$61$$":{
+  "bytes": 5381,
+  "imports": [
+    "$$210$$",
+    "$$193$$",
+    "$$54$$",
+    "$$194$$",
+    "$$198$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@codemirror/lang-php/dist/index.js"
+},
+"$$62$$":{
+  "bytes": 5282,
+  "imports": [
+    "$$211$$",
+    "$$194$$",
+    "$$198$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@codemirror/lang-python/dist/index.js"
+},
+"$$63$$":{
+  "bytes": 3604,
+  "imports": [
+    "$$212$$",
+    "$$194$$",
+    "$$198$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@codemirror/lang-rust/dist/index.js"
+},
+"$$64$$":{
+  "bytes": 3434,
+  "imports": [
+    "$$194$$",
+    "$$198$$",
+    "$$200$$",
+    "$$193$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@codemirror/lang-wast/dist/index.js"
+},
+"$$65$$":{
+  "bytes": 11320,
+  "imports": [
+    "$$213$$",
+    "$$194$$",
+    "$$198$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@codemirror/lang-xml/dist/index.js"
+},
+"$$66$$":{
+  "bytes": 3547,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/apl.js"
+},
+"$$67$$":{
+  "bytes": 1490,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/asciiarmor.js"
+},
+"$$68$$":{
+  "bytes": 7362,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/asn1.js"
+},
+"$$69$$":{
+  "bytes": 6424,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/asterisk.js"
+},
+"$$70$$":{
+  "bytes": 1361,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/brainfuck.js"
+},
+"$$71$$":{
+  "bytes": 9206,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/cobol.js"
+},
+"$$72$$":{
+  "bytes": 38116,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/clike.js"
+},
+"$$73$$":{
+  "bytes": 16059,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/clojure.js"
+},
+"$$74$$":{
+  "bytes": 38830,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/css.js"
+},
+"$$75$$":{
+  "bytes": 1956,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/cmake.js"
+},
+"$$76$$":{
+  "bytes": 8462,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/coffeescript.js"
+},
+"$$77$$":{
+  "bytes": 3861,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/commonlisp.js"
+},
+"$$78$$":{
+  "bytes": 5481,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/cypher.js"
+},
+"$$79$$":{
+  "bytes": 13713,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/python.js"
+},
+"$$80$$":{
+  "bytes": 10903,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/crystal.js"
+},
+"$$81$$":{
+  "bytes": 6641,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/d.js"
+},
+"$$82$$":{
+  "bytes": 551,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/diff.js"
+},
+"$$83$$":{
+  "bytes": 3831,
+  "imports": [
+    "$$214$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/dockerfile.js"
+},
+"$$84$$":{
+  "bytes": 3865,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/dtd.js"
+},
+"$$85$$":{
+  "bytes": 9026,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/dylan.js"
+},
+"$$86$$":{
+  "bytes": 4060,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/ebnf.js"
+},
+"$$87$$":{
+  "bytes": 7800,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/ecl.js"
+},
+"$$88$$":{
+  "bytes": 2970,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/eiffel.js"
+},
+"$$89$$":{
+  "bytes": 4250,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/elm.js"
+},
+"$$90$$":{
+  "bytes": 16671,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/erlang.js"
+},
+"$$91$$":{
+  "bytes": 46737,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/sql.js"
+},
+"$$92$$":{
+  "bytes": 2621,
+  "imports": [
+    "$$214$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/factor.js"
+},
+"$$93$$":{
+  "bytes": 3747,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/fcl.js"
+},
+"$$94$$":{
+  "bytes": 4138,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/forth.js"
+},
+"$$95$$":{
+  "bytes": 7426,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/fortran.js"
+},
+"$$96$$":{
+  "bytes": 8154,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/mllike.js"
+},
+"$$97$$":{
+  "bytes": 8572,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/gas.js"
+},
+"$$98$$":{
+  "bytes": 12076,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/gherkin.js"
+},
+"$$99$$":{
+  "bytes": 5103,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/go.js"
+},
+"$$100$$":{
+  "bytes": 7027,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/groovy.js"
+},
+"$$101$$":{
+  "bytes": 6927,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/haskell.js"
+},
+"$$102$$":{
+  "bytes": 15801,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/haxe.js"
+},
+"$$103$$":{
+  "bytes": 1755,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/http.js"
+},
+"$$104$$":{
+  "bytes": 13806,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/idl.js"
+},
+"$$105$$":{
+  "bytes": 37145,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/javascript.js"
+},
+"$$106$$":{
+  "bytes": 3564,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/jinja2.js"
+},
+"$$107$$":{
+  "bytes": 9703,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/julia.js"
+},
+"$$108$$":{
+  "bytes": 6307,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/livescript.js"
+},
+"$$109$$":{
+  "bytes": 4896,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/lua.js"
+},
+"$$110$$":{
+  "bytes": 9119,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/mirc.js"
+},
+"$$111$$":{
+  "bytes": 4671,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/mathematica.js"
+},
+"$$112$$":{
+  "bytes": 4969,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/modelica.js"
+},
+"$$113$$":{
+  "bytes": 4307,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/mumps.js"
+},
+"$$114$$":{
+  "bytes": 3054,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/mbox.js"
+},
+"$$115$$":{
+  "bytes": 9325,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/nginx.js"
+},
+"$$116$$":{
+  "bytes": 7412,
+  "imports": [
+    "$$214$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/nsis.js"
+},
+"$$117$$":{
+  "bytes": 4794,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/ntriples.js"
+},
+"$$118$$":{
+  "bytes": 3792,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/octave.js"
+},
+"$$119$$":{
+  "bytes": 5782,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/oz.js"
+},
+"$$120$$":{
+  "bytes": 3554,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/pascal.js"
+},
+"$$121$$":{
+  "bytes": 28969,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/perl.js"
+},
+"$$122$$":{
+  "bytes": 4551,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/pig.js"
+},
+"$$123$$":{
+  "bytes": 11663,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/powershell.js"
+},
+"$$124$$":{
+  "bytes": 1468,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/properties.js"
+},
+"$$125$$":{
+  "bytes": 1505,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/protobuf.js"
+},
+"$$126$$":{
+  "bytes": 6689,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/puppet.js"
+},
+"$$127$$":{
+  "bytes": 5806,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/q.js"
+},
+"$$128$$":{
+  "bytes": 5837,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/r.js"
+},
+"$$129$$":{
+  "bytes": 2898,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/rpm.js"
+},
+"$$130$$":{
+  "bytes": 9667,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/ruby.js"
+},
+"$$131$$":{
+  "bytes": 13461,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/sas.js"
+},
+"$$132$$":{
+  "bytes": 11171,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/scheme.js"
+},
+"$$133$$":{
+  "bytes": 4526,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/shell.js"
+},
+"$$134$$":{
+  "bytes": 3446,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/sieve.js"
+},
+"$$135$$":{
+  "bytes": 3838,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/smalltalk.js"
+},
+"$$136$$":{
+  "bytes": 1782,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/solr.js"
+},
+"$$137$$":{
+  "bytes": 6048,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/sparql.js"
+},
+"$$138$$":{
+  "bytes": 2227,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/spreadsheet.js"
+},
+"$$139$$":{
+  "bytes": 39022,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/stylus.js"
+},
+"$$140$$":{
+  "bytes": 6513,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/swift.js"
+},
+"$$141$$":{
+  "bytes": 6756,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/stex.js"
+},
+"$$142$$":{
+  "bytes": 21465,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/verilog.js"
+},
+"$$143$$":{
+  "bytes": 4183,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/tcl.js"
+},
+"$$144$$":{
+  "bytes": 12070,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/textile.js"
+},
+"$$145$$":{
+  "bytes": 6868,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/tiddlywiki.js"
+},
+"$$146$$":{
+  "bytes": 7524,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/tiki.js"
+},
+"$$147$$":{
+  "bytes": 2209,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/toml.js"
+},
+"$$148$$":{
+  "bytes": 1672,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/troff.js"
+},
+"$$149$$":{
+  "bytes": 8611,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/ttcn.js"
+},
+"$$150$$":{
+  "bytes": 7851,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/ttcn-cfg.js"
+},
+"$$151$$":{
+  "bytes": 3966,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/turtle.js"
+},
+"$$152$$":{
+  "bytes": 5163,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/webidl.js"
+},
+"$$153$$":{
+  "bytes": 7685,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/vb.js"
+},
+"$$154$$":{
+  "bytes": 12880,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/vbscript.js"
+},
+"$$155$$":{
+  "bytes": 5267,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/velocity.js"
+},
+"$$156$$":{
+  "bytes": 5841,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/vhdl.js"
+},
+"$$157$$":{
+  "bytes": 14856,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/xquery.js"
+},
+"$$158$$":{
+  "bytes": 4469,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/yacas.js"
+},
+"$$159$$":{
+  "bytes": 2976,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/yaml.js"
+},
+"$$160$$":{
+  "bytes": 3022,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/z80.js"
+},
+"$$161$$":{
+  "bytes": 5521,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/mscgen.js"
+},
+"$$162$$":{
+  "bytes": 6384,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/imba/polyfills/process/index.js"
+},
+"$$163$$":{
   "bytes": 24511,
   "imports": [],
   "_": "input",
   "path": "node_modules/imba/src/imba/utils.imba"
 },
-"$$53$$":{
+"$$164$$":{
   "bytes": 21187,
   "imports": [],
   "_": "input",
   "path": "node_modules/imba/src/imba/scheduler.imba"
 },
-"$$54$$":{
+"$$165$$":{
   "bytes": 8071,
   "imports": [],
   "_": "input",
   "path": "node_modules/imba/src/imba/dom/flags.imba"
 },
-"$$55$$":{
+"$$166$$":{
   "bytes": 6654,
   "imports": [],
   "_": "input",
   "path": "node_modules/imba/src/imba/dom/context.imba"
 },
-"$$56$$":{
+"$$167$$":{
   "bytes": 61103,
   "imports": [
-    "$$54$$",
-    "$$52$$",
-    "$$55$$"
+    "$$165$$",
+    "$$163$$",
+    "$$166$$"
   ],
   "_": "input",
   "path": "node_modules/imba/src/imba/dom/core.web.imba"
 },
-"$$57$$":{
+"$$168$$":{
   "bytes": 24499,
   "imports": [
-    "$$56$$",
-    "$$54$$"
+    "$$167$$",
+    "$$165$$"
   ],
   "_": "input",
   "path": "node_modules/imba/src/imba/dom/fragment.imba"
 },
-"$$58$$":{
+"$$169$$":{
   "bytes": 8766,
   "imports": [
-    "$$56$$",
-    "$$57$$"
+    "$$167$$",
+    "$$168$$"
   ],
   "_": "input",
   "path": "node_modules/imba/src/imba/dom/indexed-list.imba"
 },
-"$$59$$":{
+"$$170$$":{
   "bytes": 16401,
   "imports": [
-    "$$56$$",
-    "$$57$$",
-    "$$55$$"
+    "$$167$$",
+    "$$168$$",
+    "$$166$$"
   ],
   "_": "input",
   "path": "node_modules/imba/src/imba/dom/keyed-list.imba"
 },
-"$$60$$":{
+"$$171$$":{
   "bytes": 31321,
   "imports": [
-    "$$56$$",
-    "$$57$$",
-    "$$53$$",
-    "$$55$$"
+    "$$167$$",
+    "$$168$$",
+    "$$164$$",
+    "$$166$$"
   ],
   "_": "input",
   "path": "node_modules/imba/src/imba/dom/component.imba"
 },
-"$$61$$":{
+"$$172$$":{
   "bytes": 35238,
   "imports": [
-    "$$56$$"
+    "$$167$$"
   ],
   "_": "input",
   "path": "node_modules/imba/src/imba/dom/styles.imba"
 },
-"$$62$$":{
+"$$173$$":{
   "bytes": 5161,
   "imports": [
-    "$$55$$",
-    "$$53$$"
+    "$$166$$",
+    "$$164$$"
   ],
   "_": "input",
   "path": "node_modules/imba/src/imba/dom/mount.imba"
 },
-"$$63$$":{
+"$$174$$":{
   "bytes": 28945,
   "imports": [
-    "$$56$$",
-    "$$53$$"
+    "$$167$$",
+    "$$164$$"
   ],
   "_": "input",
   "path": "node_modules/imba/src/imba/dom/bind.imba"
 },
-"$$64$$":{
+"$$175$$":{
   "bytes": 11572,
   "imports": [
-    "$$56$$",
-    "$$60$$",
-    "$$57$$"
+    "$$167$$",
+    "$$171$$",
+    "$$168$$"
   ],
   "_": "input",
   "path": "node_modules/imba/src/imba/dom/teleport.imba"
 },
-"$$65$$":{
+"$$176$$":{
   "bytes": 31540,
   "imports": [
-    "$$56$$"
+    "$$167$$"
   ],
   "_": "input",
   "path": "node_modules/imba/src/imba/dom/transitions.imba"
 },
-"$$66$$":{
+"$$177$$":{
   "bytes": 3218,
   "imports": [
-    "$$56$$"
+    "$$167$$"
   ],
   "_": "input",
   "path": "node_modules/imba/src/imba/events/keyboard.imba"
 },
-"$$67$$":{
+"$$178$$":{
   "bytes": 2655,
   "imports": [
-    "$$56$$"
+    "$$167$$"
   ],
   "_": "input",
   "path": "node_modules/imba/src/imba/events/mouse.imba"
 },
-"$$68$$":{
+"$$179$$":{
   "bytes": 42719,
   "imports": [
-    "$$56$$",
-    "$$52$$",
-    "$$53$$",
-    "$$66$$",
-    "$$67$$"
+    "$$167$$",
+    "$$163$$",
+    "$$164$$",
+    "$$177$$",
+    "$$178$$"
   ],
   "_": "input",
   "path": "node_modules/imba/src/imba/events/core.imba"
 },
-"$$69$$":{
+"$$180$$":{
   "bytes": 8510,
   "imports": [],
   "_": "input",
   "path": "node_modules/imba/src/imba/events/hotkey.shared.imba"
 },
-"$$70$$":{
+"$$181$$":{
   "bytes": 27367,
   "imports": [],
   "_": "input",
   "path": "node_modules/imba/src/imba/events/mousetrap.mjs"
 },
-"$$71$$":{
+"$$182$$":{
   "bytes": 22821,
   "imports": [
-    "$$56$$",
-    "$$69$$",
-    "$$70$$"
+    "$$167$$",
+    "$$180$$",
+    "$$181$$"
   ],
   "_": "input",
   "path": "node_modules/imba/src/imba/events/hotkey.imba"
 },
-"$$72$$":{
+"$$183$$":{
   "bytes": 361,
   "imports": [
-    "$$82$$"
+    "$$222$$"
   ],
   "_": "input",
   "path": "node_modules/imba/index.imba"
 },
-"$$73$$":{
-  "bytes": 7087,
+"$$184$$":{
+  "bytes": 9512,
+  "imports": [],
+  "_": "input",
+  "path": "app/default_pages.imba"
+},
+"$$185$$":{
+  "bytes": 9709,
   "imports": [
-    "$$72$$"
+    "$$183$$",
+    "$$184$$"
   ],
   "_": "input",
   "path": "app/state.imba"
 },
-"$$74$$":{
-  "bytes": 4193,
+"$$186$$":{
+  "bytes": 4376,
   "imports": [],
   "_": "input",
   "path": "styles:app/global-css.imba"
 },
-"$$75$$":{
-  "bytes": 106,
+"$$187$$":{
+  "bytes": 26075,
   "imports": [],
   "_": "input",
-  "path": "styles:app/mark-down.imba"
+  "path": "node_modules/@codemirror/text/dist/index.js"
 },
-"$$76$$":{
-  "bytes": 10913,
+"$$188$$":{
+  "bytes": 83878,
   "imports": [
-    "$$72$$",
-    "$$75$$"
+    "$$187$$",
+    "$$187$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@codemirror/state/dist/index.js"
+},
+"$$189$$":{
+  "bytes": 6340,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/style-mod/src/style-mod.js"
+},
+"$$190$$":{
+  "bytes": 30098,
+  "imports": [
+    "$$188$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@codemirror/rangeset/dist/index.js"
+},
+"$$191$$":{
+  "bytes": 2966,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/w3c-keyname/index.es.js"
+},
+"$$192$$":{
+  "bytes": 302023,
+  "imports": [
+    "$$188$$",
+    "$$189$$",
+    "$$190$$",
+    "$$190$$",
+    "$$187$$",
+    "$$191$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@codemirror/view/dist/index.js"
+},
+"$$193$$":{
+  "bytes": 70208,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@lezer/common/dist/index.js"
+},
+"$$194$$":{
+  "bytes": 42541,
+  "imports": [
+    "$$193$$",
+    "$$188$$",
+    "$$192$$",
+    "$$187$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@codemirror/language/dist/index.js"
+},
+"$$195$$":{
+  "bytes": 6550,
+  "imports": [
+    "$$188$$",
+    "$$194$$",
+    "$$192$$",
+    "$$193$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@codemirror/matchbrackets/dist/index.js"
+},
+"$$196$$":{
+  "bytes": 46974,
+  "imports": [
+    "$$188$$",
+    "$$187$$",
+    "$$192$$",
+    "$$195$$",
+    "$$194$$",
+    "$$193$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@codemirror/commands/dist/index.js"
+},
+"$$197$$":{
+  "bytes": 15721,
+  "imports": [
+    "$$188$$",
+    "$$192$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@codemirror/history/dist/index.js"
+},
+"$$198$$":{
+  "bytes": 40028,
+  "imports": [
+    "$$193$$",
+    "$$189$$",
+    "$$192$$",
+    "$$188$$",
+    "$$194$$",
+    "$$190$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@codemirror/highlight/dist/index.js"
+},
+"$$199$$":{
+  "bytes": 74653,
+  "imports": [
+    "$$193$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@lezer/markdown/dist/index.js"
+},
+"$$200$$":{
+  "bytes": 63204,
+  "imports": [
+    "$$193$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@lezer/lr/dist/index.js"
+},
+"$$201$$":{
+  "bytes": 15556,
+  "imports": [
+    "$$200$$",
+    "$$193$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@lezer/html/dist/index.es.js"
+},
+"$$202$$":{
+  "bytes": 10472,
+  "imports": [
+    "$$200$$",
+    "$$193$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@lezer/css/dist/index.es.js"
+},
+"$$203$$":{
+  "bytes": 55814,
+  "imports": [
+    "$$200$$",
+    "$$193$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@lezer/javascript/dist/index.es.js"
+},
+"$$204$$":{
+  "bytes": 58366,
+  "imports": [
+    "$$188$$",
+    "$$192$$",
+    "$$223$$",
+    "$$194$$",
+    "$$187$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@codemirror/autocomplete/dist/index.js"
+},
+"$$205$$":{
+  "bytes": 10268,
+  "imports": [
+    "$$183$$",
+    "$$188$$",
+    "$$192$$",
+    "$$196$$",
+    "$$197$$",
+    "$$194$$",
+    "$$195$$",
+    "$$198$$",
+    "$$55$$",
+    "$$206$$",
+    "$$215$$",
+    "$$216$$"
   ],
   "_": "input",
   "path": "app/mark-down.imba"
 },
-"$$77$$":{
+"$$206$$":{
+  "bytes": 32200,
+  "imports": [
+    "$$194$$",
+    "$$56$$",
+    "$$57$$",
+    "$$58$$",
+    "$$58$$",
+    "$$52$$",
+    "$$54$$",
+    "$$59$$",
+    "$$53$$",
+    "$$60$$",
+    "$$53$$",
+    "$$55$$",
+    "$$61$$",
+    "$$62$$",
+    "$$63$$",
+    "$$53$$",
+    "$$53$$",
+    "$$64$$",
+    "$$65$$",
+    "$$66$$",
+    "$$67$$",
+    "$$68$$",
+    "$$69$$",
+    "$$70$$",
+    "$$71$$",
+    "$$72$$",
+    "$$73$$",
+    "$$73$$",
+    "$$74$$",
+    "$$75$$",
+    "$$76$$",
+    "$$77$$",
+    "$$78$$",
+    "$$79$$",
+    "$$80$$",
+    "$$81$$",
+    "$$72$$",
+    "$$82$$",
+    "$$83$$",
+    "$$84$$",
+    "$$85$$",
+    "$$86$$",
+    "$$87$$",
+    "$$73$$",
+    "$$88$$",
+    "$$89$$",
+    "$$90$$",
+    "$$91$$",
+    "$$92$$",
+    "$$93$$",
+    "$$94$$",
+    "$$95$$",
+    "$$96$$",
+    "$$97$$",
+    "$$98$$",
+    "$$99$$",
+    "$$100$$",
+    "$$101$$",
+    "$$102$$",
+    "$$102$$",
+    "$$103$$",
+    "$$104$$",
+    "$$105$$",
+    "$$106$$",
+    "$$107$$",
+    "$$72$$",
+    "$$74$$",
+    "$$108$$",
+    "$$109$$",
+    "$$110$$",
+    "$$111$$",
+    "$$112$$",
+    "$$113$$",
+    "$$114$$",
+    "$$115$$",
+    "$$116$$",
+    "$$117$$",
+    "$$72$$",
+    "$$72$$",
+    "$$96$$",
+    "$$118$$",
+    "$$119$$",
+    "$$120$$",
+    "$$121$$",
+    "$$122$$",
+    "$$123$$",
+    "$$124$$",
+    "$$125$$",
+    "$$126$$",
+    "$$127$$",
+    "$$128$$",
+    "$$129$$",
+    "$$129$$",
+    "$$130$$",
+    "$$131$$",
+    "$$72$$",
+    "$$132$$",
+    "$$74$$",
+    "$$133$$",
+    "$$134$$",
+    "$$135$$",
+    "$$136$$",
+    "$$96$$",
+    "$$137$$",
+    "$$138$$",
+    "$$91$$",
+    "$$91$$",
+    "$$72$$",
+    "$$139$$",
+    "$$140$$",
+    "$$141$$",
+    "$$141$$",
+    "$$142$$",
+    "$$143$$",
+    "$$144$$",
+    "$$145$$",
+    "$$146$$",
+    "$$147$$",
+    "$$148$$",
+    "$$149$$",
+    "$$150$$",
+    "$$151$$",
+    "$$152$$",
+    "$$153$$",
+    "$$154$$",
+    "$$155$$",
+    "$$142$$",
+    "$$156$$",
+    "$$157$$",
+    "$$158$$",
+    "$$159$$",
+    "$$160$$",
+    "$$161$$",
+    "$$161$$",
+    "$$161$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@codemirror/language-data/dist/index.js"
+},
+"$$207$$":{
+  "bytes": 92001,
+  "imports": [
+    "$$200$$",
+    "$$193$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@lezer/cpp/dist/index.es.js"
+},
+"$$208$$":{
+  "bytes": 31814,
+  "imports": [
+    "$$200$$",
+    "$$193$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@lezer/java/dist/index.es.js"
+},
+"$$209$$":{
+  "bytes": 1646,
+  "imports": [
+    "$$200$$",
+    "$$193$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@lezer/json/dist/index.es.js"
+},
+"$$210$$":{
+  "bytes": 93741,
+  "imports": [
+    "$$200$$",
+    "$$193$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@lezer/php/dist/index.es.js"
+},
+"$$211$$":{
+  "bytes": 49981,
+  "imports": [
+    "$$200$$",
+    "$$193$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@lezer/python/dist/index.es.js"
+},
+"$$212$$":{
+  "bytes": 68655,
+  "imports": [
+    "$$200$$",
+    "$$193$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@lezer/rust/dist/index.es.js"
+},
+"$$213$$":{
+  "bytes": 8482,
+  "imports": [
+    "$$200$$",
+    "$$193$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@lezer/xml/dist/index.es.js"
+},
+"$$214$$":{
+  "bytes": 4255,
+  "imports": [],
+  "_": "input",
+  "path": "node_modules/@codemirror/legacy-modes/mode/simple-mode.js"
+},
+"$$215$$":{
+  "bytes": 8822,
+  "imports": [
+    "$$198$$"
+  ],
+  "_": "input",
+  "path": "app/highlighting.imba"
+},
+"$$216$$":{
+  "bytes": 172,
+  "imports": [],
+  "_": "input",
+  "path": "styles:app/mark-down.imba"
+},
+"$$217$$":{
   "bytes": 29,
   "imports": [],
   "_": "input",
   "path": "styles:app/menu-popup.imba"
 },
-"$$78$$":{
+"$$218$$":{
   "bytes": 4089,
   "imports": [
-    "$$72$$",
-    "$$77$$"
+    "$$183$$",
+    "$$217$$"
   ],
   "_": "input",
   "path": "app/menu-popup.imba"
 },
-"$$79$$":{
+"$$219$$":{
   "bytes": 2204,
   "imports": [],
   "_": "input",
   "path": "app/svg_paths.imba"
 },
-"$$80$$":{
-  "bytes": 13628,
+"$$220$$":{
+  "bytes": 13363,
   "imports": [],
   "_": "input",
   "path": "styles:app/client.imba"
 },
-"$$81$$":{
-  "bytes": 5579,
+"$$221$$":{
+  "bytes": 5835,
   "imports": [
-    "$$74$$"
+    "$$186$$"
   ],
   "_": "input",
   "path": "app/global-css.imba"
 },
-"$$82$$":{
+"$$222$$":{
   "bytes": 3000,
   "imports": [
-    "$$52$$",
-    "$$53$$",
-    "$$83$$",
-    "$$84$$",
-    "$$85$$",
-    "$$56$$",
-    "$$57$$",
-    "$$58$$",
-    "$$59$$",
-    "$$60$$",
-    "$$61$$",
-    "$$55$$",
-    "$$62$$",
-    "$$63$$",
-    "$$64$$",
-    "$$65$$",
-    "$$68$$",
-    "$$67$$",
-    "$$66$$",
-    "$$86$$",
-    "$$87$$",
-    "$$88$$",
-    "$$89$$",
-    "$$90$$",
-    "$$71$$",
-    "$$91$$"
+    "$$163$$",
+    "$$164$$",
+    "$$224$$",
+    "$$225$$",
+    "$$226$$",
+    "$$167$$",
+    "$$168$$",
+    "$$169$$",
+    "$$170$$",
+    "$$171$$",
+    "$$172$$",
+    "$$166$$",
+    "$$173$$",
+    "$$174$$",
+    "$$175$$",
+    "$$176$$",
+    "$$179$$",
+    "$$178$$",
+    "$$177$$",
+    "$$227$$",
+    "$$228$$",
+    "$$229$$",
+    "$$230$$",
+    "$$231$$",
+    "$$182$$",
+    "$$232$$"
   ],
   "_": "input",
   "path": "node_modules/imba/src/imba/imba.imba"
 },
-"$$83$$":{
+"$$223$$":{
+  "bytes": 22451,
+  "imports": [
+    "$$192$$",
+    "$$188$$"
+  ],
+  "_": "input",
+  "path": "node_modules/@codemirror/tooltip/dist/index.js"
+},
+"$$224$$":{
   "bytes": 750,
   "imports": [],
   "_": "input",
   "path": "node_modules/imba/src/imba/manifest.web.imba"
 },
-"$$84$$":{
+"$$225$$":{
   "bytes": 370,
   "imports": [],
   "_": "input",
   "path": "node_modules/imba/src/imba/process.web.imba"
 },
-"$$85$$":{
+"$$226$$":{
   "bytes": 7538,
   "imports": [
-    "$$83$$"
+    "$$224$$"
   ],
   "_": "input",
   "path": "node_modules/imba/src/imba/asset.imba"
 },
-"$$86$$":{
+"$$227$$":{
   "bytes": 3093,
   "imports": [
-    "$$56$$",
-    "$$52$$",
-    "$$67$$",
-    "$$92$$"
+    "$$167$$",
+    "$$163$$",
+    "$$178$$",
+    "$$233$$"
   ],
   "_": "input",
   "path": "node_modules/imba/src/imba/events/pointer.imba"
 },
-"$$87$$":{
+"$$228$$":{
   "bytes": 64659,
   "imports": [
-    "$$56$$",
-    "$$52$$",
-    "$$92$$"
+    "$$167$$",
+    "$$163$$",
+    "$$233$$"
   ],
   "_": "input",
   "path": "node_modules/imba/src/imba/events/touch.imba"
 },
-"$$88$$":{
+"$$229$$":{
   "bytes": 13806,
   "imports": [
-    "$$56$$",
-    "$$92$$"
+    "$$167$$",
+    "$$233$$"
   ],
   "_": "input",
   "path": "node_modules/imba/src/imba/events/intersect.imba"
 },
-"$$89$$":{
+"$$230$$":{
   "bytes": 7459,
   "imports": [
-    "$$56$$",
-    "$$92$$"
+    "$$167$$",
+    "$$233$$"
   ],
   "_": "input",
   "path": "node_modules/imba/src/imba/events/resize.imba"
 },
-"$$90$$":{
+"$$231$$":{
   "bytes": 3799,
   "imports": [
-    "$$56$$"
+    "$$167$$"
   ],
   "_": "input",
   "path": "node_modules/imba/src/imba/events/selection.imba"
 },
-"$$91$$":{
+"$$232$$":{
   "bytes": 49959,
   "imports": [
-    "$$93$$",
-    "$$56$$",
-    "$$94$$",
-    "$$95$$",
-    "$$96$$",
-    "$$97$$",
-    "$$53$$",
-    "$$52$$",
-    "$$98$$"
+    "$$234$$",
+    "$$167$$",
+    "$$235$$",
+    "$$236$$",
+    "$$237$$",
+    "$$238$$",
+    "$$164$$",
+    "$$163$$",
+    "$$239$$"
   ],
   "_": "input",
   "path": "node_modules/imba/src/imba/router/index.imba"
 },
-"$$92$$":{
+"$$233$$":{
   "bytes": 8214,
   "imports": [],
   "_": "input",
   "path": "node_modules/imba/src/imba/events/helpers.imba"
 },
-"$$93$$":{
+"$$234$$":{
   "bytes": 14160,
   "imports": [],
   "_": "input",
   "path": "node_modules/imba/vendor/events.js"
 },
-"$$94$$":{
+"$$235$$":{
   "bytes": 8528,
   "imports": [],
   "_": "input",
   "path": "node_modules/imba/src/imba/router/location.imba"
 },
-"$$95$$":{
+"$$236$$":{
   "bytes": 2696,
   "imports": [],
   "_": "input",
   "path": "node_modules/imba/src/imba/router/history.imba"
 },
-"$$96$$":{
+"$$237$$":{
   "bytes": 3085,
   "imports": [
-    "$$94$$"
+    "$$235$$"
   ],
   "_": "input",
   "path": "node_modules/imba/src/imba/router/request.imba"
 },
-"$$97$$":{
+"$$238$$":{
   "bytes": 22104,
   "imports": [],
   "_": "input",
   "path": "node_modules/imba/src/imba/router/route.imba"
 },
-"$$98$$":{
+"$$239$$":{
   "bytes": 5004,
   "imports": [
-    "$$52$$"
+    "$$163$$"
   ],
   "_": "input",
   "path": "node_modules/imba/src/imba/queue.imba"
@@ -1153,7 +2864,7 @@
     "/__assets__/all.css": "$$42$$"
   },
   "mappings": {},
-  "hash": "ZVNFTJGU",
+  "hash": "ZGEQOYAW",
   "srcdir": "..",
   "outdir": ".",
   "path": "server.js.manifest",
