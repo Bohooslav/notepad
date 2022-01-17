@@ -6,6 +6,19 @@ global css
 		$acc-bgc-hover: hsl(276, 100%, 94%)
 		$disabled: rgb(86, 82, 78)
 
+		$indigo:indigo8
+		$lime:lime7
+		$cyan:cyan5
+		$violet:violet7
+		$orange:orange7
+		$yellow:yellow7
+		$sky:sky6
+		$amber:amber6
+		$blue:blue7
+		$rose:rose7
+		$cool:cool5
+
+
 	html[data-theme="dark"]
 		$bgc: rgb(4, 6, 12)
 		$c: rgb(255, 238, 238)
@@ -13,12 +26,18 @@ global css
 		$acc-bgc-hover: #383a6d
 		$disabled: rgb(168, 162, 159)
 
-		$header:#82B1FF
-		$strong:#FFCB6B
-		$italic:#C792EA
-		$quote:#B48EAD
-		$url:#8ABEB7
-		$string:#C3E88D
+		$indigo:indigo3
+		$lime:lime4
+		$cyan:cyan3
+		$violet:violet4
+		$orange:orange4
+		$yellow:yellow4
+		$sky:sky4
+		$amber:amber5
+		$blue:blue4
+		$rose:rose4
+		$cool:cool5
+
 
 	html[data-theme="sepia"]
 		$bgc: rgb(235, 219, 183)

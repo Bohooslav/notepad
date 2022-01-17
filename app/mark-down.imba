@@ -1,17 +1,15 @@
 import { EditorState } from '@codemirror/state'
 import { EditorView, keymap } from '@codemirror/view'
-import { defaultKeymap } from '@codemirror/commands'
+import { defaultKeymap, indentWithTab } from '@codemirror/commands'
 import { history, historyKeymap } from '@codemirror/history'
 import { indentOnInput } from '@codemirror/language'
 import { bracketMatching } from '@codemirror/matchbrackets'
 import { defaultHighlightStyle } from '@codemirror/highlight'
 import { markdown, markdownLanguage } from '@codemirror/lang-markdown'
 import { languages } from '@codemirror/language-data'
-# import { oneDark } from '@codemirror/theme-one-dark'
-
+import { closeBrackets, closeBracketsKeymap } from '@codemirror/closebrackets'
 
 import { syntaxHighlighting } from './highlighting'
-
 
 
 tag mark-down
@@ -35,21 +33,29 @@ tag mark-down
 			}
 			".cm-content": {
 				caretColor: 'var(--c)'
-				minHeight: "100%"
 				height:'auto'
+				minHeight:"calc(100vh - 128px)"
+				paddingBottom:'25vh'
 			}
 			".cm-scroller": {
 				fontFamily:ff
 				height:'auto'
-				paddingBottom:'25vh'
 			}
+			"&.cm-editor.cm-focused": {
+				outline:'none'
+			}
+			"&.cm-focused .cm-matchingBracket, &.cm-focused .cm-nonmatchingBracket": {
+				backgroundColor: "var(--acc-bgc-hover)",
+				outline: "1px solid var(--acc-bgc)"
+			},
 		}, {dark:true})
 
 		const startState = EditorState.create({
 			doc: page.text,
 			extensions: [
-				keymap.of([...defaultKeymap, ...historyKeymap]),
+				keymap.of([...defaultKeymap, ...historyKeymap, ...closeBracketsKeymap, indentWithTab]),
 				history(),
+				closeBrackets(),
 				indentOnInput(),
 				bracketMatching(),
 				defaultHighlightStyle.fallback,
@@ -60,7 +66,6 @@ tag mark-down
 				}),
 				bollsPadTheme,
 				syntaxHighlighting,
-				# oneDark,
 				EditorView.lineWrapping,
 				EditorView.updateListener.of(do(update)
 					if update.changes
@@ -105,4 +110,4 @@ tag mark-down
 	css
 		d:inline-block
 		ws:pre-wrap
-		height:calc(100vh - 128px) w:100% p:8px calc(50vw - 12px - $homx)
+		min-height:calc(100vh - 128px) w:100% p:8px calc(50vw - 12px - $homx)
