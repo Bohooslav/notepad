@@ -31,6 +31,7 @@ let extab = yes
 let settings = {
 	theme: 'dark'
 	accent: 'blue'
+	tabs: no
 	font:
 		size: 16
 		family: "'JetBrains Mono', monospace"
@@ -130,6 +131,7 @@ tag app
 			settings.accent = state.getCookie('accent') || settings.accent
 		changeTheme(settings.theme)
 
+		settings.tabs = (state.getCookie('tabs') == 'true')
 		settings.font.size = parseInt(state.getCookie('font')) || settings.font.size
 		settings.font.family = state.getCookie('font-family') || settings.font.family
 		settings.font.name = state.getCookie('font-name') || settings.font.name
@@ -141,7 +143,6 @@ tag app
 		menu_left = -300
 		settings_menu_left = -300
 		modal_window = ''
-		# $main.firstChild.focus!
 		imba.commit!
 
 	def toggleMenu
@@ -231,19 +232,36 @@ tag app
 
 
 	def goToPage index
-		if index == -1
-			index = state.pages.length - 1
-		elif index == state.pages.length
-			index = 0
-		state.current_page = index
-		state.setCookie('current_page', index)
+		state.goToPage index
 		clearSpace!
 
 	def setPage id
+		state.setLastVisited!
 		state.current_page = state.pages.indexOf(state.pages.find(do(el) return el.id == id))
 		state.setCookie('current_page', state.current_page)
+		state.setTab!
 		clearSpace!
-		
+	
+	def closeTab id
+		if state.tabs.length == 1
+			console.log('You better not to close the last tab you son of a homo sapiens!')
+			return
+		let page_index = state.pages.indexOf(state.pages.find(do(el) return el.id == id))
+		log page_index, state.current_page
+		state.tabs.splice(state.tabs.indexOf(id), 1)
+		state.setCookie('tabs', JSON.stringify(state.tabs))
+
+		if page_index == state.current_page
+			let last_visited_page_index = state.pages.indexOf(state.pages.find(do(el) return el.id == state.last_visited_tab))
+			log last_visited_page_index, 'jsfv'
+			state.current_page = last_visited_page_index
+
+		if state.current_page >= state.pages.length
+			state.current_page -= 1
+
+		state.setCookie('current_page', state.current_page)
+		clearSpace!
+
 
 
 	def removePage
@@ -383,7 +401,7 @@ tag app
 					for item in content
 						if !item.id || !item.title || !item.text
 							throw 'bad file'
-					log 'good', content
+					# log 'good', content
 					store.import_data = content
 
 			catch e
@@ -409,6 +427,28 @@ tag app
 		clearSpace!
 		window.alert('Import was successfull!')
 
+	def tabTitle title
+		if title
+			let lines = title.split('\n')
+			title = lines.shift!
+			if title.startsWith('#')
+				return title.substring(1)
+		else
+			title = "Untitled"
+
+		return title	
+
+
+	def getPageById id
+		for page in state.pages
+			if page.id == id
+				return page
+			
+	def toggleTabs
+		settings.tabs = !settings.tabs
+		state.setCookie('tabs', settings.tabs)
+
+
 	def render
 		<self @mousemove=mousemove [$homx:{settings.font.max-width / 2}em]>
 
@@ -427,7 +467,16 @@ tag app
 						<title> 'Next (Alt + Right Arrow)'
 						<path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z">
 
-				<[ml:auto]>
+				<[d:flex w:100% h:100% ai:center]>
+					if settings.tabs
+						for tab in state.tabs
+							let page = getPageById tab
+							<div.tab .opentab=(page.id == state.page.id) @click=setPage(page.id) @click.middle=closeTab(page.id)>
+								<p> tabTitle page.title
+								<span @click.stop=closeTab(page.id)> '⨯'
+					else
+						<div.tab[o:1 bgc@hover:$bgc]>
+							<p> tabTitle state.page.title
 				if state.pages.length
 					<menu-popup[pos:relative] bind=store.show_page_menu>
 						<button @click=(store.show_page_menu = !store.show_page_menu)>
@@ -468,7 +517,6 @@ tag app
 					<p[o:0.5 pos:absolute t:0 zi:-1]> 'Here begins your poetry 😉'
 
 
-
 			<nav.drawer @touchstart=slidestart @touchend=closedrawersend @touchcancel=closedrawersend @touchmove=closingdrawer
 				style="left: {menu_left}px; {boxShadow(menu_left)}{(onzone || inzone) ? 'transition:none;' : ''}">
 				<h1[p:8px d:flex ai:center pr:0]>
@@ -491,7 +539,6 @@ tag app
 					<svg[h:100% w:40px pr:16px fill:$c @hover:$acc-color-hover cursor:pointer] viewBox="0 0 12 12" width="24px" height="24px" @click=($nav_search.focus!)>
 						<title> "Search"
 						<path d="M9.827 8.584l1.95 1.951a.879.879 0 0 1-1.242 1.242l-1.95-1.95c-2.137 1.55-5.12 1.383-7.02-.517-2.108-2.108-2.083-5.55.055-7.69C3.76-.518 7.202-.543 9.31 1.565c1.9 1.9 2.067 4.883.517 7.02zm-1.256-.013c1.721-1.72 1.741-4.49.045-6.187C6.92.688 4.15.708 2.429 2.43.708 4.149.688 6.919 2.384 8.616c1.696 1.696 4.466 1.676 6.187-.045z">
-					
 
 
 			<aside @touchstart=slidestart @touchend=closedrawersend @touchcancel=closedrawersend @touchmove=closingdrawer
@@ -571,6 +618,9 @@ tag app
 					'Export / Import'
 
 
+				<div.parent_checkbox @click=toggleTabs .checked=settings.tabs>
+					'Tabs'
+					<p.checkbox> <span>
 
 			if modal_window.length
 				<section [pos:fixed t:0 b:0 r:0 l:0 bgc:#000A h:100% d:flex jc:center p:14vh 0 @lt-sm:0 o@off:0 visibility@off:hidden zi:3] @click=clearSpace ease>
@@ -590,10 +640,7 @@ tag app
 									<title> "Search"
 									<path d=svg_paths.search>
 
-							# if search_results.length
 							<article[pb:32px]>
-								# <p[ta:	left p:8px 0 fs:16px c:$disabled]> "{search_results.length} results:"
-
 								<>
 									for result, key in search_results
 										<div.page_in_nav @click=setPage(result.id)>
@@ -659,9 +706,6 @@ tag app
 
 
 	css
-		# d:flex
-		# fld:column
-		# jc:center
 		p:64px 12px
 		min-height:100%
 
@@ -812,8 +856,11 @@ tag app
 			fw:bold
 		
 		.active_tab
-			bgc:$acc-color
-		
+			bgc:$acc-color-hover
+			c:$bgc
+
+
+	css
 		#imex
 			h1
 				my:16px
@@ -870,6 +917,83 @@ tag app
 			input[type="radio"]@checked::before
 				content: '●'
 
+	css
+		.tab
+			w:100% h:100%
+			bgc@hover:$acc-bgc
+			d:flex ai:center
+			p:8px
+			cursor:pointer
+			ta:center
+			pos:relative
+			bc:$acc-bgc
+			transition-property:background-color, opacity
+			bs:solid
+			bw:0px
+			o:0.5 @hover:1
+
+			p
+				w:100%
+				-webkit-line-clamp:1
+				overflow: hidden
+				display: -webkit-box
+				-webkit-box-orient: vertical
+				word-break: break-all
+			
+			span
+				pos:absolute
+				r:8px
+				bgc@hover:$acc-bgc-hover
+				d:inline-block
+				size:24px
+				min-width:24px
+				lh:1
+				p:3px 4px
+				rd:1em
+				o:0
+			
+			@hover
+				span
+					o:1
+			
+		.opentab
+			bwb:4px
+			o:1
+			span
+				o:1
+
+	css
+		.parent_checkbox
+			d:flex ai:center
+			m:24px 0
+			h:38px
+			cursor:pointer
+			$filling: $disabled
+			c:$disabled
+			width: 100%
+		
+		
+		.checkbox
+			width: 50px
+			min-width: 50px
+			height: 30px
+			border: 2px solid $filling
+			border-radius: 40px
+			margin-left: auto
+
+		.checkbox span
+			display: block
+			width: 26px
+			height: 26px
+			background: $filling
+			border-radius: 14px
+
+		.checked
+			$filling:$c
+			c:$c
+		
+		.checked span
+			x:20px
 
 tag page-preview
 	prop title\object

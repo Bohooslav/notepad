@@ -1,5 +1,5 @@
 import { EditorState } from '@codemirror/state'
-import { EditorView, keymap } from '@codemirror/view'
+import { EditorView, keymap, placeholder } from '@codemirror/view'
 import { defaultKeymap, indentWithTab } from '@codemirror/commands'
 import { history, historyKeymap } from '@codemirror/history'
 import { indentOnInput } from '@codemirror/language'
@@ -19,7 +19,6 @@ tag mark-down
 
 	def setup
 		useCodeMirror!
-		log editorView
 		imba.commit!
 
 	def useCodeMirror
@@ -51,19 +50,22 @@ tag mark-down
 		}, {dark:true})
 
 		const startState = EditorState.create({
-			doc: page.text,
+			doc: page.text
 			extensions: [
 				keymap.of([...defaultKeymap, ...historyKeymap, ...closeBracketsKeymap, indentWithTab]),
 				history(),
-				closeBrackets(),
+				closeBrackets({
+					brackets:["(", "[", '{', "'", '"', '`', '```', '*', '**', '_', '__']
+				}),
 				indentOnInput(),
 				bracketMatching(),
 				defaultHighlightStyle.fallback,
 				markdown({
 					base: markdownLanguage,
 					codeLanguages: languages,
-					addKeymap: true
+					addKeymap: true,
 				}),
+				placeholder('Mark dowm something juicy 🍋')
 				bollsPadTheme,
 				syntaxHighlighting,
 				EditorView.lineWrapping,

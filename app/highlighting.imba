@@ -42,6 +42,13 @@ export const syntaxHighlighting = HighlightStyle.define([
 		opacity:0.5
 	}
 	{
+		tag:tags.monospace
+		backgroundColor:'var(--codebg)'
+		color:'var(--code)'
+		borderRadius:'4px'
+		fontFamily:"'JetBrains Mono', monospace"
+	}
+	{
 		tag:tags.link
 		textDecoration: "underline"
 		color: 'var(--indigo)'
@@ -67,6 +74,7 @@ export const syntaxHighlighting = HighlightStyle.define([
 	{
 		tag:tags.quote
 		color:'var(--indigo)'
+		fontStyle:'italic'
 	}
 	{
 		tag:tags.strikethrough,

@@ -2,25 +2,41 @@ import default_pages from './default_pages'
 
 class State
 	pages = []
+	tabs = []
 	current_page = 0
+	last_visited_tab = ''
+
 	get page
-		return pages[current_page]
+		if pages.length
+			if current_page >= pages.length || current_page < 0
+				current_page = pages.length - 1
+				setCookie('current_page', current_page)
+			return pages[current_page]
+
+		return {id:'000', title:"Untitled", text:''}
 
 
 	def constructor
 		pages = JSON.parse(getCookie('pages')) || []
 		unless pages.length
 			pages = default_pages
+
 		current_page = parseInt(getCookie('current_page')) || 0
+		tabs = JSON.parse(getCookie('tabs')) || []
+
+		unless tabs.length
+			tabs.push page.id
+
 		unless getCookie('migrated')
 			migrateToMarkdown!
 			setCookie('migrated', 'true')
+
+		# console.log page
 
 
 	def migrateToMarkdown
 		for page in pages
 			console.log page.text
-			# page.text = page.text.replace('<br>', '\n')
 			page.text = page.text.replaceAll('</div><div>', '</div>\n<div>')
 
 
@@ -28,7 +44,6 @@ class State
 			div.style.whiteSpace = 'pre'
 			div.innerHTML = page.text
 			page.text = div.innerText
-			# page.text = page.text.replace('\n', '\n\n')
 
 			console.log page.text
 		
@@ -42,6 +57,10 @@ class State
 
 	def setCookie c_name, value
 		window.localStorage.setItem(c_name, value)
+
+	def copyObj obj\object
+		return JSON.parse(JSON.stringify(obj))
+
 
 	def randString
 		Math.random().toString(36).slice(2)
@@ -69,8 +88,24 @@ class State
 		savePages!
 
 
-	def copyObj obj\object
-		return JSON.parse(JSON.stringify(obj))
+
+	def goToPage index
+		setLastVisited!
+		if index == -1
+			index = pages.length - 1
+		elif index == pages.length
+			index = 0
+		current_page = index
+		setTab!
+		setCookie('current_page', index)
+
+	def setLastVisited
+		last_visited_tab = page.id
+
+	def setTab
+		unless page.id in tabs
+			tabs.push page.id
+		setCookie('tabs', JSON.stringify(tabs))
 
 	# def loadData url
 	# 	let res = await window.fetch url
