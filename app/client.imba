@@ -131,7 +131,7 @@ tag app
 			settings.accent = state.getCookie('accent') || settings.accent
 		changeTheme(settings.theme)
 
-		settings.tabs = (state.getCookie('tabs') == 'true')
+		settings.tabs = (state.getCookie('show_tabs') == 'true')
 		settings.font.size = parseInt(state.getCookie('font')) || settings.font.size
 		settings.font.family = state.getCookie('font-family') || settings.font.family
 		settings.font.name = state.getCookie('font-name') || settings.font.name
@@ -446,7 +446,7 @@ tag app
 			
 	def toggleTabs
 		settings.tabs = !settings.tabs
-		state.setCookie('tabs', settings.tabs)
+		state.setCookie('show_tabs', settings.tabs)
 
 
 	def render

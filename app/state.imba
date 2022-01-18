@@ -25,7 +25,7 @@ class State
 		tabs = JSON.parse(getCookie('tabs')) || []
 
 		unless tabs.length
-			tabs.push page.id
+			tabs = [page.id]
 
 		unless getCookie('migrated')
 			migrateToMarkdown!
@@ -84,6 +84,7 @@ class State
 			title: text
 			text: text
 		}
+		setTab!
 		setCookie('current_page', current_page)
 		savePages!
 
