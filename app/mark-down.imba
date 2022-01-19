@@ -5,15 +5,15 @@ import { history, historyKeymap } from '@codemirror/history'
 import { indentOnInput } from '@codemirror/language'
 import { bracketMatching } from '@codemirror/matchbrackets'
 import { defaultHighlightStyle } from '@codemirror/highlight'
-import { markdown, markdownLanguage } from '@codemirror/lang-markdown'
+import { markdown, markdownLanguage, markdownKeymap } from '@codemirror/lang-markdown'
 import { languages } from '@codemirror/language-data'
 import { closeBrackets, closeBracketsKeymap } from '@codemirror/closebrackets'
+import { StreamLanguage } from "@codemirror/stream-parser"
 
 import { syntaxHighlighting } from './highlighting'
 
 
 tag mark-down
-	ff\string
 	page\object
 	editorView\EditorView
 
@@ -25,8 +25,8 @@ tag mark-down
 		const bollsPadTheme = EditorView.theme({
 			'&': {
 				backgroundColor: 'transparent !important'
-				fontFamily:ff
-				font:ff
+				fontFamily:'var(--ff)'
+				font:'var(--ff)'
 				height: 'auto'
 				color:'var(--c)'
 			}
@@ -37,7 +37,7 @@ tag mark-down
 				paddingBottom:'25vh'
 			}
 			".cm-scroller": {
-				fontFamily:ff
+				fontFamily:'var(--ff)'
 				height:'auto'
 			}
 			"&.cm-editor.cm-focused": {
@@ -52,11 +52,9 @@ tag mark-down
 		const startState = EditorState.create({
 			doc: page.text
 			extensions: [
-				keymap.of([...defaultKeymap, ...historyKeymap, ...closeBracketsKeymap, indentWithTab]),
+				keymap.of([...defaultKeymap, ...historyKeymap, ...closeBracketsKeymap, ...markdownKeymap, indentWithTab]),
 				history(),
-				closeBrackets({
-					brackets:["(", "[", '{', "'", '"', '`', '```', '*', '**', '_', '__']
-				}),
+				closeBrackets(),
 				indentOnInput(),
 				bracketMatching(),
 				defaultHighlightStyle.fallback,
@@ -65,6 +63,7 @@ tag mark-down
 					codeLanguages: languages,
 					addKeymap: true,
 				}),
+				markdownLanguage.data.of({closeBrackets: {brackets: ["(", "[", '{', "'", '"', '`', '*', '_']}}),
 				placeholder('Mark dowm something juicy 🍋')
 				bollsPadTheme,
 				syntaxHighlighting,

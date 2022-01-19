@@ -31,22 +31,18 @@ class State
 			migrateToMarkdown!
 			setCookie('migrated', 'true')
 
-		# console.log page
+		console.log page
 
 
 	def migrateToMarkdown
 		for page in pages
-			console.log page.text
 			page.text = page.text.replaceAll('</div><div>', '</div>\n<div>')
-
 
 			let div = <div>
 			div.style.whiteSpace = 'pre'
 			div.innerHTML = page.text
 			page.text = div.innerText
 
-			console.log page.text
-		
 		savePages!
 
 	def savePages

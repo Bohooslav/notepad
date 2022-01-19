@@ -27,8 +27,8 @@ global css
 		$acc-bgc: #252749
 		$acc-bgc-hover: #383a6d
 		$disabled: rgb(168, 162, 159)
-		$codebg:cooler8
-		$code:warmer2
+		$codebg:hsla(175.93,60.82%,19.02%,50%)
+		$code:green1
 
 		$indigo:indigo3
 		$lime:lime4

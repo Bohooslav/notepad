@@ -27,11 +27,13 @@ let settings_menu_left = -300
 let show_accents = no
 let modal_window = ''
 let extab = yes
+let shortalt = no
 
 let settings = {
 	theme: 'dark'
 	accent: 'blue'
 	tabs: no
+	shortcuts_hint:yes
 	font:
 		size: 16
 		family: "'JetBrains Mono', monospace"
@@ -132,17 +134,25 @@ tag app
 		changeTheme(settings.theme)
 
 		settings.tabs = (state.getCookie('show_tabs') == 'true')
+		settings.shortcuts_hint = !(state.getCookie('shortcuts_hint') == 'false')
 		settings.font.size = parseInt(state.getCookie('font')) || settings.font.size
 		settings.font.family = state.getCookie('font-family') || settings.font.family
 		settings.font.name = state.getCookie('font-name') || settings.font.name
 		settings.font.line-height = parseFloat(state.getCookie('line-height')) || settings.font.line-height
 		settings.font.max-width = parseInt(state.getCookie('max-width')) || settings.font.max-width
+	
+
+		document.onkeyup = do(e)
+			if e.which == 18
+				shortalt = no
+				imba.commit!
 
 
 	def clearSpace
 		menu_left = -300
 		settings_menu_left = -300
 		modal_window = ''
+		shortalt = no
 		imba.commit!
 
 	def toggleMenu
@@ -247,14 +257,24 @@ tag app
 			console.log('You better not to close the last tab you son of a homo sapiens!')
 			return
 		let page_index = state.pages.indexOf(state.pages.find(do(el) return el.id == id))
-		log page_index, state.current_page
-		state.tabs.splice(state.tabs.indexOf(id), 1)
+		let tab_index = state.tabs.indexOf(id)
+		state.tabs.splice(tab_index, 1)
 		state.setCookie('tabs', JSON.stringify(state.tabs))
 
 		if page_index == state.current_page
-			let last_visited_page_index = state.pages.indexOf(state.pages.find(do(el) return el.id == state.last_visited_tab))
-			log last_visited_page_index, 'jsfv'
-			state.current_page = last_visited_page_index
+			if last_visited_tab in state.tabs
+				state.current_page = state.pages.indexOf(state.pages.find(do(el) return el.id == last_visited_tab))
+			else
+				unless state.tabs[tab_index]
+					log state.tabs[tab_index], tab_index, 'hehe'
+					if tab_index > 0
+						tab_index--
+					else
+						tab_index++
+
+				log state.tabs[tab_index]
+				state.current_page = state.pages.indexOf(state.pages.find(do(el) return el.id == state.tabs[tab_index]))
+
 
 		if state.current_page >= state.pages.length
 			state.current_page -= 1
@@ -447,7 +467,14 @@ tag app
 	def toggleTabs
 		settings.tabs = !settings.tabs
 		state.setCookie('show_tabs', settings.tabs)
+	
+	def toggleShortcutsHint
+		settings.shortcuts_hint = !settings.shortcuts_hint
+		state.setCookie('shortcuts_hint', settings.shortcuts_hint)
 
+
+	def closeCurrentTab
+		closeTab state.page.id
 
 	def render
 		<self @mousemove=mousemove [$homx:{settings.font.max-width / 2}em]>
@@ -507,14 +534,9 @@ tag app
 
 
 			<mark-down
-				ff=settings.font.family
-				[fs:{settings.font.size}px lh:{settings.font.line-height}]
+				[fs:{settings.font.size}px lh:{settings.font.line-height} $ff:{settings.font.family}]
 				key=state.page.id page=state.page
 				>
-
-				# Use https://codemirror.net/doc/manual.html#addon_placeholder as a placeholder
-				if state.page.text == '' or state.page.text == '<br>'
-					<p[o:0.5 pos:absolute t:0 zi:-1]> 'Here begins your poetry 😉'
 
 
 			<nav.drawer @touchstart=slidestart @touchend=closedrawersend @touchcancel=closedrawersend @touchmove=closingdrawer
@@ -622,6 +644,12 @@ tag app
 					'Tabs'
 					<p.checkbox> <span>
 
+				<div.parent_checkbox @click=toggleShortcutsHint .checked=settings.shortcuts_hint>
+					'Shortcuts hint'
+					<p.checkbox> <span>
+
+
+
 			if modal_window.length
 				<section [pos:fixed t:0 b:0 r:0 l:0 bgc:#000A h:100% d:flex jc:center p:14vh 0 @lt-sm:0 o@off:0 visibility@off:hidden zi:3] @click=clearSpace ease>
 
@@ -690,6 +718,34 @@ tag app
 										readOnly=yes
 										[w:100% h:calc(100% - 356px) bgc:$bgc c:$c resize:vertical bd:none]>
 
+
+
+			if shortalt && settings.shortcuts_hint
+				<.shortalt[o@off:0] ease>
+					<h1[fs:1.2em pb:8px]> 'Shortcuts'
+					<p>
+						<code> 'Alt + Right Arrow'
+						" — go to next page"
+					<p>
+						<code> 'Alt + Left Arrow'
+						" — go to previous page"
+					<p>
+						<code> 'Alt + N'
+						" — create a fresh page"
+
+					if settings.tabs
+						<p>
+							<code> 'Alt + W'
+							" — close current tab"
+					<p>
+						<code> 'Ctrl + Shift + F'
+						" — search pages"
+					<p>
+						<code> 'Ctrl + W'
+						" — quit / close app"
+
+
+
 			<global
 				@hotkey("mod+s").force.prevent.stop
 				@hotkey("mod+q").force.prevent.stop=(window.open('', '_parent', '').close();)
@@ -701,6 +757,9 @@ tag app
 
 				@hotkey('mod+shift+f').force.stop.prevent=showMainSearch
 				@hotkey('esc').force.stop.prevent=clearSpace
+
+				@hotkey('alt').force.passive=(shortalt = yes)
+				@hotkey('alt+w').force.prevent.stop=closeCurrentTab
 				>
 
 
@@ -995,6 +1054,16 @@ tag app
 		.checked span
 			x:20px
 
+
+	css
+		.shortalt
+			pos:fixed t:48px r:16px bgc:$bgc bd:1px solid $acc-bgc rd:16px transition-duration:150ms p:16px
+		
+		.shortalt
+			code
+				c:$code
+			p
+				p:2px 0
 tag page-preview
 	prop title\object
 
