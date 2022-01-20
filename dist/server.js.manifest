@@ -378,7 +378,7 @@
   "public": true,
   "path": "public/__assets__/all.css",
   "asset": "$$42$$",
-  "hash": "H1X414NK",
+  "hash": "YDJAB9IB",
   "originalPath": "all.__dist__.css",
   "url": "/__assets__/all.css"
 },
@@ -470,7 +470,7 @@
   "imports": [],
   "exports": [],
   "inputs": [],
-  "bytes": 3421711,
+  "bytes": 3427183,
   "source": "$$51$$",
   "_": "output",
   "path": "public/__assets__/app/client.js.map",
@@ -478,7 +478,7 @@
   "url": "/__assets__/app/client.js.map",
   "type": "map",
   "dependencies": [],
-  "hash": "DUTRH4SF"
+  "hash": "DAY5UUKU"
 },
 "$$46$$":{
   "imports": [],
@@ -527,7 +527,7 @@
     ],
     [
       "$$62$$",
-      2419
+      2464
     ],
     [
       "$$63$$",
@@ -699,7 +699,7 @@
     ],
     [
       "$$105$$",
-      17549
+      17553
     ],
     [
       "$$106$$",
@@ -751,7 +751,7 @@
     ],
     [
       "$$118$$",
-      2372
+      2370
     ],
     [
       "$$119$$",
@@ -847,7 +847,7 @@
     ],
     [
       "$$142$$",
-      8712
+      8705
     ],
     [
       "$$143$$",
@@ -895,7 +895,7 @@
     ],
     [
       "$$154$$",
-      5998
+      5999
     ],
     [
       "$$155$$",
@@ -1019,7 +1019,7 @@
     ],
     [
       "$$185$$",
-      2759
+      2736
     ],
     [
       "$$186$$",
@@ -1047,11 +1047,11 @@
     ],
     [
       "$$192$$",
-      109050
+      110118
     ],
     [
       "$$193$$",
-      23987
+      23985
     ],
     [
       "$$194$$",
@@ -1099,7 +1099,7 @@
     ],
     [
       "$$205$$",
-      1795
+      1799
     ],
     [
       "$$206$$",
@@ -1143,7 +1143,7 @@
     ],
     [
       "$$216$$",
-      1674
+      1692
     ],
     [
       "$$217$$",
@@ -1167,10 +1167,10 @@
     ],
     [
       "$$51$$",
-      45493
+      46591
     ]
   ],
-  "bytes": 1396347,
+  "bytes": 1398551,
   "map": "$$45$$",
   "source": "$$51$$",
   "css": "$$47$$",
@@ -1180,7 +1180,7 @@
   "url": "/__assets__/app/client.js",
   "type": "js",
   "dependencies": [],
-  "hash": "DUTRH4SF",
+  "hash": "DAY5UUKU",
   "originalPath": "app/client.__dist__.js"
 },
 "$$47$$":{
@@ -1188,7 +1188,7 @@
   "inputs": [
     [
       "$$221$$",
-      13893
+      14022
     ],
     [
       "$$186$$",
@@ -1203,7 +1203,7 @@
       25
     ]
   ],
-  "bytes": 19147,
+  "bytes": 19276,
   "source": "$$51$$",
   "_": "output",
   "path": "public/__assets__/app/client.css",
@@ -1211,7 +1211,7 @@
   "url": "/__assets__/app/client.css",
   "type": "css",
   "dependencies": [],
-  "hash": "FQBAGIL3",
+  "hash": "WKBBMK8I",
   "originalPath": "app/client.__dist__.css"
 },
 "$$48$$":{
@@ -1238,7 +1238,7 @@
   "js": "$$44$$"
 },
 "$$51$$":{
-  "bytes": 165040,
+  "bytes": 169235,
   "imports": [
     "$$183$$",
     "$$185$$",
@@ -1366,7 +1366,7 @@
   "path": "node_modules/@codemirror/lang-php/dist/index.js"
 },
 "$$62$$":{
-  "bytes": 5282,
+  "bytes": 5384,
   "imports": [
     "$$211$$",
     "$$194$$",
@@ -2176,7 +2176,7 @@
   "path": "app/default_pages.imba"
 },
 "$$185$$":{
-  "bytes": 13149,
+  "bytes": 13097,
   "imports": [
     "$$183$$",
     "$$184$$"
@@ -2226,7 +2226,7 @@
   "path": "node_modules/w3c-keyname/index.es.js"
 },
 "$$192$$":{
-  "bytes": 302023,
+  "bytes": 304850,
   "imports": [
     "$$188$$",
     "$$189$$",
@@ -2357,7 +2357,7 @@
   "path": "node_modules/@codemirror/autocomplete/dist/index.js"
 },
 "$$205$$":{
-  "bytes": 12179,
+  "bytes": 12007,
   "imports": [
     "$$183$$",
     "$$188$$",
@@ -2370,7 +2370,6 @@
     "$$55$$",
     "$$206$$",
     "$$215$$",
-    "$$56$$",
     "$$216$$",
     "$$217$$"
   ],
@@ -2601,7 +2600,7 @@
   "path": "node_modules/@codemirror/closebrackets/dist/index.js"
 },
 "$$216$$":{
-  "bytes": 9809,
+  "bytes": 9887,
   "imports": [
     "$$198$$"
   ],
@@ -2636,7 +2635,7 @@
   "path": "app/svg_paths.imba"
 },
 "$$221$$":{
-  "bytes": 15522,
+  "bytes": 15672,
   "imports": [],
   "_": "input",
   "path": "styles:app/client.imba"
@@ -2882,7 +2881,7 @@
     "/__assets__/all.css": "$$42$$"
   },
   "mappings": {},
-  "hash": "0CYNOJGQ",
+  "hash": "CGFGBZRO",
   "srcdir": "..",
   "outdir": ".",
   "path": "server.js.manifest",

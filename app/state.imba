@@ -31,7 +31,7 @@ class State
 			migrateToMarkdown!
 			setCookie('migrated', 'true')
 
-		console.log page
+		# console.log page
 
 
 	def migrateToMarkdown

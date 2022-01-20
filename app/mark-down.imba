@@ -8,7 +8,6 @@ import { defaultHighlightStyle } from '@codemirror/highlight'
 import { markdown, markdownLanguage, markdownKeymap } from '@codemirror/lang-markdown'
 import { languages } from '@codemirror/language-data'
 import { closeBrackets, closeBracketsKeymap } from '@codemirror/closebrackets'
-import { StreamLanguage } from "@codemirror/stream-parser"
 
 import { syntaxHighlighting } from './highlighting'
 
@@ -63,7 +62,7 @@ tag mark-down
 					codeLanguages: languages,
 					addKeymap: true,
 				}),
-				markdownLanguage.data.of({closeBrackets: {brackets: ["(", "[", '{', "'", '"', '`', '*', '_']}}),
+				markdownLanguage.data.of({closeBrackets: {brackets: ["(", "[", '{', "'", '"', '`', '*', '_', '~']}}),
 				placeholder('Mark dowm something juicy 🍋')
 				bollsPadTheme,
 				syntaxHighlighting,

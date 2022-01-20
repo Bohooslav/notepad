@@ -113,6 +113,16 @@ const accents = [
 ]
 
 
+def hidePanels
+	shortalt = no
+
+
+window.onblur = hidePanels
+document.body.onmouseleave = hidePanels
+document.onmouseleave = hidePanels
+window.onmouseout = hidePanels
+
+
 
 tag app
 	search_results = []
@@ -379,11 +389,18 @@ tag app
 
 
 		for page in state.pages # in aa given translations book
-			const score = scoreSearch(page.title, query)
+			# Approximate search through title
+			let score = scoreSearch(page.title, query)
+
+			# Add bounty through full note search
+			if query in page.text.toLowerCase!
+				score += 64
+
 			if score > query.length * 0.75
 				search_results.push({
 					id: page.id
 					title: page.title
+					score: score
 				})
 
 		search_results = search_results.sort(do |a, b| b.score - a.score)
@@ -474,7 +491,8 @@ tag app
 
 
 	def closeCurrentTab
-		closeTab state.page.id
+		if settings.tabs
+			closeTab state.page.id
 
 	def render
 		<self @mousemove=mousemove [$homx:{settings.font.max-width / 2}em]>
@@ -533,10 +551,8 @@ tag app
 						<path d="M7.502 1.019a.996.996 0 0 0-.998.998v.451a5.734 5.734 0 0 0-1.356.566l-.322-.322a.995.995 0 0 0-1.41 0l-.705.705a.995.995 0 0 0 0 1.41l.32.32a5.734 5.734 0 0 0-.56 1.358h-.454a.995.995 0 0 0-.998.996V8.5c0 .553.446.996.998.996h.45a5.734 5.734 0 0 0 .566 1.356l-.322.322a.995.995 0 0 0 0 1.41l.705.705c.39.391 1.02.391 1.41 0l.32-.32a5.734 5.734 0 0 0 1.358.56v.456c0 .552.445.996.998.996h.996a.995.995 0 0 0 .998-.996v-.451a5.734 5.734 0 0 0 1.355-.567l.323.322c.39.391 1.02.391 1.41 0l.705-.705a.995.995 0 0 0 0-1.41l-.32-.32a5.734 5.734 0 0 0 .56-1.358h.453a.995.995 0 0 0 .998-.996v-.998a.995.995 0 0 0-.998-.996h-.449a5.734 5.734 0 0 0-.566-1.355l.322-.323a.995.995 0 0 0 0-1.41l-.705-.705a.995.995 0 0 0-1.41 0l-.32.32a5.734 5.734 0 0 0-1.358-.56v-.455a.996.996 0 0 0-.998-.998zm.515 3.976a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3z" style="marker:none">
 
 
-			<mark-down
-				[fs:{settings.font.size}px lh:{settings.font.line-height} $ff:{settings.font.family}]
-				key=state.page.id page=state.page
-				>
+			<div[fs:{settings.font.size}px lh:{settings.font.line-height} $ff:{settings.font.family}]>
+				<mark-down key=state.page.id page=state.page>
 
 
 			<nav.drawer @touchstart=slidestart @touchend=closedrawersend @touchcancel=closedrawersend @touchmove=closingdrawer
@@ -551,7 +567,7 @@ tag app
 				for page, i in state.pages when store.nav_search.toLowerCase! in page.title.toLowerCase!
 					nothing_found = no
 					<div.page_in_nav .active_butt=(i==state.current_page) @click=goToPage(i)>
-						<page-preview title=page.title>
+						<page-preview page=page>
 
 				if nothing_found
 					<p[ws:pre fs:14px ta:center pt:16px]> '(ಠ╭╮ಠ)  ¯\\_(ツ)_/¯  ノ( ゜-゜ノ)'
@@ -672,7 +688,7 @@ tag app
 								<>
 									for result, key in search_results
 										<div.page_in_nav @click=setPage(result.id)>
-											<page-preview title=result.title>
+											<page-preview page=result>
 
 								unless search_results.length
 									<div[display:flex flex-direction:column height:100% justify-content:center align-items:center]>
@@ -721,29 +737,8 @@ tag app
 
 
 			if shortalt && settings.shortcuts_hint
-				<.shortalt[o@off:0] ease>
-					<h1[fs:1.2em pb:8px]> 'Shortcuts'
-					<p>
-						<code> 'Alt + Right Arrow'
-						" — go to next page"
-					<p>
-						<code> 'Alt + Left Arrow'
-						" — go to previous page"
-					<p>
-						<code> 'Alt + N'
-						" — create a fresh page"
-
-					if settings.tabs
-						<p>
-							<code> 'Alt + W'
-							" — close current tab"
-					<p>
-						<code> 'Ctrl + Shift + F'
-						" — search pages"
-					<p>
-						<code> 'Ctrl + W'
-						" — quit / close app"
-
+				<shortcuts-hint[o@off:0] ease>
+				
 
 
 			<global
@@ -1055,33 +1050,73 @@ tag app
 			x:20px
 
 
-	css
-		.shortalt
-			pos:fixed t:48px r:16px bgc:$bgc bd:1px solid $acc-bgc rd:16px transition-duration:150ms p:16px
-		
-		.shortalt
-			code
-				c:$code
-			p
-				p:2px 0
-tag page-preview
-	prop title\object
 
-	css
+tag page-preview
+	prop page\object
+
+	css self, b
 		-webkit-line-clamp:3
 		overflow: hidden
 		display: -webkit-box
 		-webkit-box-orient: vertical
 		ws:pre-wrap
+		word-break:break-word
+	
+	css b
+		-webkit-line-clamp:2
+
+
 
 	def render
 		<self>
-			if title
-				let lines = title.split('\n')
-				<b> lines.shift!
+			if page.title
+				let lines = page.title.split('\n')
+				<div[d:flex jc:space-between]>
+					<b> lines.shift!
+					if page.score
+						<i> page.score
 				if lines.length > 1
 					<p[fs:0.9em]> lines.join('\n')
 			else
 				<b> "Empty page 🤷🏻‍♂️"
+
+tag shortcuts-hint
+	<self>
+		<h1[fs:1.2em pb:8px]> 'Shortcuts'
+		<p>
+			<code> 'Alt + Right Arrow'
+			" — go to next page"
+		<p>
+			<code> 'Alt + Left Arrow'
+			" — go to previous page"
+		<p>
+			<code> 'Alt + N'
+			" — create a fresh page"
+
+		if settings.tabs
+			<p>
+				<code> 'Alt + W'
+				" — close current tab"
+		<p>
+			<code> 'Ctrl + Shift + F'
+			" — search pages"
+		<p>
+			<code> 'Ctrl + W'
+			" — quit / close app"
+		<p>
+			'Hold '
+			<code> 'Alt'
+			' to see this hint'
+		
+		<global @click.outside=(shortalt = no)>
+
+	css
+		pos:fixed t:48px r:16px bgc:$bgc bd:1px solid $acc-bgc rd:16px transition-duration:150ms p:16px
+
+	css
+		code
+			c:$code
+		p
+			p:2px 0
 
 imba.mount <app>
