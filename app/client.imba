@@ -38,7 +38,6 @@ let settings = {
 		size: 16
 		family: "'JetBrains Mono', monospace"
 		name: "JetBrains Mono"
-		line-height: 1.6
 		max-width: 60
 
 	get light
@@ -148,7 +147,6 @@ tag app
 		settings.font.size = parseInt(state.getCookie('font')) || settings.font.size
 		settings.font.family = state.getCookie('font-family') || settings.font.family
 		settings.font.name = state.getCookie('font-name') || settings.font.name
-		settings.font.line-height = parseFloat(state.getCookie('line-height')) || settings.font.line-height
 		settings.font.max-width = parseInt(state.getCookie('max-width')) || settings.font.max-width
 	
 
@@ -343,13 +341,6 @@ tag app
 		settings.font.name = font.name
 		state.setCookie('font-family', font.code)
 		state.setCookie('font-name', font.name)
-
-	def changeLineHeight increase
-		if increase && settings.font.line-height < 2.6
-			settings.font.line-height += 0.2
-		elif settings.font.line-height > 1.2
-			settings.font.line-height -= 0.2
-		state.setCookie('line-height', settings.font.line-height)
 
 	def changeMaxWidth increase
 		if increase && settings.font.max-width < 120 && (settings.font.max-width - 15) * settings.font.size < window.innerWidth
@@ -551,12 +542,12 @@ tag app
 						<path d="M7.502 1.019a.996.996 0 0 0-.998.998v.451a5.734 5.734 0 0 0-1.356.566l-.322-.322a.995.995 0 0 0-1.41 0l-.705.705a.995.995 0 0 0 0 1.41l.32.32a5.734 5.734 0 0 0-.56 1.358h-.454a.995.995 0 0 0-.998.996V8.5c0 .553.446.996.998.996h.45a5.734 5.734 0 0 0 .566 1.356l-.322.322a.995.995 0 0 0 0 1.41l.705.705c.39.391 1.02.391 1.41 0l.32-.32a5.734 5.734 0 0 0 1.358.56v.456c0 .552.445.996.998.996h.996a.995.995 0 0 0 .998-.996v-.451a5.734 5.734 0 0 0 1.355-.567l.323.322c.39.391 1.02.391 1.41 0l.705-.705a.995.995 0 0 0 0-1.41l-.32-.32a5.734 5.734 0 0 0 .56-1.358h.453a.995.995 0 0 0 .998-.996v-.998a.995.995 0 0 0-.998-.996h-.449a5.734 5.734 0 0 0-.566-1.355l.322-.323a.995.995 0 0 0 0-1.41l-.705-.705a.995.995 0 0 0-1.41 0l-.32.32a5.734 5.734 0 0 0-1.358-.56v-.455a.996.996 0 0 0-.998-.998zm.515 3.976a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3z" style="marker:none">
 
 
-			<div[fs:{settings.font.size}px lh:{settings.font.line-height} $ff:{settings.font.family}]>
+			<div[fs:{settings.font.size}px $ff:{settings.font.family}]>
 				<mark-down key=state.page.id page=state.page>
 
 
 			<nav.drawer @touchstart=slidestart @touchend=closedrawersend @touchcancel=closedrawersend @touchmove=closingdrawer
-				style="left: {menu_left}px; {boxShadow(menu_left)}{(onzone || inzone) ? 'transition:none;' : ''}">
+				style="left: {menu_left}px; {boxShadow(menu_left)}{(onzone || inzone) ? 'transition:none;' : ''};display:flex;flex-direction:column;">
 				<h1[p:8px d:flex ai:center pr:0]>
 					"Pages"
 					<button[ml:auto] @click=(state.addNewPage!, clearSpace!)>
@@ -572,7 +563,9 @@ tag app
 				if nothing_found
 					<p[ws:pre fs:14px ta:center pt:16px]> '(ಠ╭╮ಠ)  ¯\\_(ツ)_/¯  ノ( ゜-゜ノ)'
 
-				<[d:flex h:48px pos:absolute b:0px l:0px w:100%]>
+				<[min-height:128px]>
+
+				<[d:flex h:48px min-height:48px bgc:$bgc pos:sticky mt:auto b:-16px l:0px w:100%]>
 					<input$nav_search bind=store.nav_search [h:100% w:100% font:inherit c:inherit bg:$bgc bd:none px:8px] placeholder="Search">
 					<svg[h:100% w:40px pr:16px fill:$c @hover:$acc-color-hover cursor:pointer] viewBox="0 0 12 12" width="24px" height="24px" @click=($nav_search.focus!)>
 						<title> "Search"
@@ -614,18 +607,6 @@ tag app
 				<.btnbox>
 					<button[p: 12px fs: 20px].cbtn @click=decreaseFontSize title='Decreace font size'> "B-"
 					<button[p: 8px fs: 24px].cbtn @click=increaseFontSize title='Increace font size'> "B+"
-
-				<.btnbox>
-					<svg.cbtn @click=changeLineHeight(no) viewBox="0 0 38 14" fill="context-fill" [padding: 16px 0]>
-						<title> "Decrease line height"
-						<rect x="0" y="0" width="28" height="2">
-						<rect x="0" y="6" width="38" height="2">
-						<rect x="0" y="12" width="18" height="2">
-					<svg.cbtn @click=changeLineHeight(yes) viewBox="0 0 38 24" fill="context-fill" [padding: 10px 0]>
-						<title> "Increase line height"
-						<rect x="0" y="0" width="28" height="2">
-						<rect x="0" y="11" width="38" height="2">
-						<rect x="0" y="22" width="18" height="2">
 
 				if window.innerWidth > 639
 					<.btnbox>
@@ -765,6 +746,7 @@ tag app
 
 
 	css
+
 		nav
 			svg
 				size:24px
@@ -786,11 +768,11 @@ tag app
 		aside
 			border-left: 1px solid $acc-bgc
 			padding: 16px 12px
-			overflow-y: auto
 			-webkit-overflow-scrolling: touch
 			transition-property@important: right
 
 		.drawer
+			overflow-y: auto
 			border-right: 1px solid $acc-bgc
 			padding: 16px 8px
 			transition-property@important: left

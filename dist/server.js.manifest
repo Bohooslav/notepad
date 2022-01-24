@@ -378,7 +378,7 @@
   "public": true,
   "path": "public/__assets__/all.css",
   "asset": "$$42$$",
-  "hash": "YDJAB9IB",
+  "hash": "O5SRPNW5",
   "originalPath": "all.__dist__.css",
   "url": "/__assets__/all.css"
 },
@@ -470,7 +470,7 @@
   "imports": [],
   "exports": [],
   "inputs": [],
-  "bytes": 3427183,
+  "bytes": 3424835,
   "source": "$$51$$",
   "_": "output",
   "path": "public/__assets__/app/client.js.map",
@@ -478,7 +478,7 @@
   "url": "/__assets__/app/client.js.map",
   "type": "map",
   "dependencies": [],
-  "hash": "DAY5UUKU"
+  "hash": "YPIVLQGQ"
 },
 "$$46$$":{
   "imports": [],
@@ -751,15 +751,15 @@
     ],
     [
       "$$118$$",
-      2370
+      2358
     ],
     [
       "$$119$$",
-      2986
+      2959
     ],
     [
       "$$120$$",
-      2329
+      2324
     ],
     [
       "$$121$$",
@@ -1107,7 +1107,7 @@
     ],
     [
       "$$207$$",
-      90114
+      90062
     ],
     [
       "$$208$$",
@@ -1167,10 +1167,10 @@
     ],
     [
       "$$51$$",
-      46591
+      44681
     ]
   ],
-  "bytes": 1398551,
+  "bytes": 1396545,
   "map": "$$45$$",
   "source": "$$51$$",
   "css": "$$47$$",
@@ -1180,7 +1180,7 @@
   "url": "/__assets__/app/client.js",
   "type": "js",
   "dependencies": [],
-  "hash": "DAY5UUKU",
+  "hash": "YPIVLQGQ",
   "originalPath": "app/client.__dist__.js"
 },
 "$$47$$":{
@@ -1188,7 +1188,7 @@
   "inputs": [
     [
       "$$221$$",
-      14022
+      13986
     ],
     [
       "$$186$$",
@@ -1203,7 +1203,7 @@
       25
     ]
   ],
-  "bytes": 19276,
+  "bytes": 19240,
   "source": "$$51$$",
   "_": "output",
   "path": "public/__assets__/app/client.css",
@@ -1211,7 +1211,7 @@
   "url": "/__assets__/app/client.css",
   "type": "css",
   "dependencies": [],
-  "hash": "WKBBMK8I",
+  "hash": "7SAI3PGO",
   "originalPath": "app/client.__dist__.css"
 },
 "$$48$$":{
@@ -1238,7 +1238,7 @@
   "js": "$$44$$"
 },
 "$$51$$":{
-  "bytes": 169235,
+  "bytes": 162895,
   "imports": [
     "$$183$$",
     "$$185$$",
@@ -2519,7 +2519,7 @@
   "path": "node_modules/@codemirror/language-data/dist/index.js"
 },
 "$$207$$":{
-  "bytes": 92001,
+  "bytes": 91949,
   "imports": [
     "$$200$$",
     "$$193$$"
@@ -2635,7 +2635,7 @@
   "path": "app/svg_paths.imba"
 },
 "$$221$$":{
-  "bytes": 15672,
+  "bytes": 15634,
   "imports": [],
   "_": "input",
   "path": "styles:app/client.imba"
@@ -2881,7 +2881,7 @@
     "/__assets__/all.css": "$$42$$"
   },
   "mappings": {},
-  "hash": "CGFGBZRO",
+  "hash": "SPOXAYBS",
   "srcdir": "..",
   "outdir": ".",
   "path": "server.js.manifest",
